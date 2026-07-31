@@ -1,0 +1,24 @@
+# Private development material
+/src/
+/tests/
+/artifacts/
+/eng/
+/docs/
+
+# Build outputs and local IDE state
+[Bb]in/
+[Oo]bj/
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+
+# Local diagnostics and secrets
+*.log
+.env
+.env.*
+*.pfx
+*.p12
+*.pem
+*.key
