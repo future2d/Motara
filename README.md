@@ -5,6 +5,23 @@
 Motara is a cross-platform project for facial-tracking data processing and
 virtual avatar control.
 
+## PurismCore Compliance Record
+
+The project has completed an internal compliance review of its use of
+PurismCore. A normalized code-fragment comparison covered 52 Purism source or
+header files and 186 source or header files from Live2D's public Framework
+repository. The recorded comparison found no exactly identical normalized
+fragment of 12 or more lines.
+
+This is a limited technical observation, not a legal conclusion. In
+particular, it does not by itself decide questions of access, non-literal or
+substantial similarity, fair use or other defenses, or liability. See the
+[English compliance record](docs/legal/PurismCore-Compliance.md) and its
+[Chinese version](docs/legal/PurismCore-Compliance.zh-CN.md). The repository
+also preserves a source-linked Chinese record and an unofficial English
+translation of Supreme People's Court Guiding Case No. 48 in
+[`docs/legal`](docs/legal/).
+
 ## Project Status
 
 Motara is in early development. This public repository currently provides the

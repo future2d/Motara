@@ -3,7 +3,8 @@
 /tests/
 /artifacts/
 /eng/
-/docs/
+/docs/internal/
+/docs/private/
 
 # Build outputs and local IDE state
 [Bb]in/
