@@ -1,0 +1,74 @@
+<Application
+    x:Class="Motara.App.App"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:completion="clr-namespace:AvaloniaEdit.CodeCompletion;assembly=AvaloniaEdit"
+    RequestedThemeVariant="Light">
+  <Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://AvaloniaEdit/Themes/Fluent/AvaloniaEdit.xaml" />
+    <Style Selector="ScrollBar.motara-scrollbar">
+      <Setter Property="Background" Value="Transparent" />
+    </Style>
+    <Style Selector="ScrollBar.motara-scrollbar:vertical">
+      <Setter Property="Width" Value="10" />
+    </Style>
+    <Style Selector="ScrollBar.motara-scrollbar:horizontal">
+      <Setter Property="Height" Value="10" />
+    </Style>
+    <Style Selector="ScrollBar.motara-scrollbar /template/ Thumb">
+      <Setter Property="Background" Value="{DynamicResource BorderSubtle}" />
+    </Style>
+    <Style Selector="ScrollBar.motara-scrollbar /template/ Thumb:pointerover">
+      <Setter Property="Background" Value="{DynamicResource CategoryApricot}" />
+    </Style>
+    <Style Selector="Window">
+      <Setter Property="FontFamily" Value="{DynamicResource ShellFontFamily}" />
+    </Style>
+    <Style Selector="TextBlock.formula-completion-primary">
+      <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    </Style>
+    <Style Selector="TextBlock.formula-completion-secondary">
+      <Setter Property="Foreground" Value="{DynamicResource TextSecondary}" />
+    </Style>
+    <Style Selector="TextBox.locked-input">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}" />
+      <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="NumericUpDown.locked-input">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}" />
+      <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="NumericUpDown.locked-input /template/ TextBox">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="completion|CompletionList.motara-formula-completion ListBoxItem">
+      <Setter Property="Margin" Value="3,2" />
+      <Setter Property="Padding" Value="9,7" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderBrush" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="CornerRadius" Value="7" />
+    </Style>
+    <Style Selector="completion|CompletionList.motara-formula-completion ListBoxItem:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+    </Style>
+    <Style Selector="completion|CompletionList.motara-formula-completion ListBoxItem:selected">
+      <Setter Property="Background" Value="{DynamicResource FormulaCompletionSelection}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource FormulaCompletionSelectionBorder}" />
+    </Style>
+  </Application.Styles>
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Motara.App/Themes/LightTheme.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

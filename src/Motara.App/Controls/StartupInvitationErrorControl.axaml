@@ -1,0 +1,11 @@
+<UserControl
+    x:Class="Motara.App.Controls.StartupInvitationErrorControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <StackPanel Spacing="18">
+    <TextBlock x:Name="MessageText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+    <Button x:Name="CloseButton" Classes="workspace-footer" Theme="{DynamicResource WorkspaceActionButtonTheme}"
+            HorizontalAlignment="Right" FontSize="14" />
+  </StackPanel>
+</UserControl>

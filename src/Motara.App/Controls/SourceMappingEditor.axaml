@@ -1,0 +1,99 @@
+<UserControl
+    x:Class="Motara.App.Controls.SourceMappingEditor"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:Motara.App.Controls"
+    x:CompileBindings="False">
+  <UserControl.Styles>
+    <Style Selector="ListBox"><Setter Property="Background" Value="Transparent" /><Setter Property="BorderThickness" Value="0" /><Setter Property="Padding" Value="4" /></Style>
+    <Style Selector="ListBoxItem"><Setter Property="Margin" Value="0,2" /><Setter Property="Padding" Value="9,7" /><Setter Property="Background" Value="Transparent" /><Setter Property="CornerRadius" Value="7" /></Style>
+    <Style Selector="ListBoxItem:pointerover"><Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" /></Style>
+    <Style Selector="ListBoxItem:selected"><Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" /></Style>
+    <Style Selector="ListBoxItem.validation-error"><Setter Property="BorderBrush" Value="{DynamicResource StatusError}" /><Setter Property="BorderThickness" Value="1" /></Style>
+  </UserControl.Styles>
+  <local:ParameterMappingEditorShell x:Name="EditorShell" IsActionBarVisible="False">
+    <local:ParameterMappingEditorShell.HeaderContent>
+      <Grid ColumnDefinitions="260,*,Auto,Auto,Auto,Auto" ColumnSpacing="8">
+        <ComboBox x:Name="SourceSelector" MinHeight="36" FontSize="14" />
+        <Button x:Name="OpenConfigurationFolderButton" Grid.Column="2" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        <Button x:Name="ImportButton" Grid.Column="3" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        <Button x:Name="SaveAsButton" Grid.Column="4" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        <Button x:Name="RestoreDefaultButton" Grid.Column="5" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      </Grid>
+    </local:ParameterMappingEditorShell.HeaderContent>
+
+    <local:ParameterMappingEditorShell.EditorContent>
+      <Grid RowDefinitions="Auto,*" RowSpacing="14">
+        <Grid ColumnDefinitions="240,*,280" ColumnSpacing="14">
+          <TextBlock x:Name="InputsTitle" FontSize="14" FontWeight="SemiBold" />
+          <TextBlock x:Name="FormulaTitle" Grid.Column="1" FontSize="14" FontWeight="SemiBold" />
+          <TextBlock x:Name="OutputsTitle" Grid.Column="2" FontSize="14" FontWeight="SemiBold" />
+        </Grid>
+        <Grid Grid.Row="1" ColumnDefinitions="240,*,280" ColumnSpacing="14">
+          <Grid RowDefinitions="Auto,*" RowSpacing="8">
+            <TextBox x:Name="InputSearch" Text="{Binding SearchText, Mode=TwoWay}" FontSize="14" />
+            <Border Grid.Row="1" Background="{DynamicResource SurfaceFloatingHover}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" CornerRadius="8">
+              <ListBox x:Name="InputList" ItemsSource="{Binding FilteredInputs}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox.ItemTemplate><DataTemplate><StackPanel Spacing="2"><TextBlock Text="{Binding Id}" FontSize="13" TextWrapping="Wrap" /><TextBlock Text="{Binding Subtitle}" FontSize="11" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" /></StackPanel></DataTemplate></ListBox.ItemTemplate>
+              </ListBox>
+            </Border>
+          </Grid>
+          <Grid Grid.Column="1" RowDefinitions="150,Auto,Auto,*,Auto" RowSpacing="10">
+            <local:FormulaEditorControl x:Name="FormulaInput" Text="{Binding Formula, Mode=TwoWay}" />
+            <Grid Grid.Row="1" ColumnDefinitions="110,*">
+              <TextBlock x:Name="ParameterIdLabel" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+              <TextBox x:Name="SelectedParameterIdInput" Grid.Column="1" Text="{Binding SelectedParameterId, Mode=TwoWay}" IsReadOnly="{Binding IsSelectedBuiltInParameter}" Focusable="{Binding CanEditSelectedParameterMetadata}" IsHitTestVisible="{Binding CanEditSelectedParameterMetadata}" Classes.locked-input="{Binding IsSelectedBuiltInParameter}" FontSize="13" />
+            </Grid>
+            <Grid Grid.Row="2" ColumnDefinitions="110,*">
+              <TextBlock x:Name="SubtitleLabel" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+              <TextBox x:Name="SelectedSubtitleInput" Grid.Column="1" Text="{Binding SelectedSubtitle, Mode=TwoWay}" IsReadOnly="{Binding IsSelectedBuiltInParameter}" Focusable="{Binding CanEditSelectedParameterMetadata}" IsHitTestVisible="{Binding CanEditSelectedParameterMetadata}" Classes.locked-input="{Binding IsSelectedBuiltInParameter}" FontSize="13" />
+            </Grid>
+            <StackPanel Grid.Row="3" Spacing="8">
+              <Grid ColumnDefinitions="110,*"><TextBlock x:Name="MinimumLabel" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource TextSecondary}" /><NumericUpDown x:Name="SuggestedMinimumInput" Grid.Column="1" Value="{Binding SuggestedMinimum, Mode=TwoWay}" IsReadOnly="{Binding IsSelectedBuiltInParameter}" Focusable="{Binding CanEditSelectedParameterMetadata}" IsHitTestVisible="{Binding CanEditSelectedParameterMetadata}" Classes.locked-input="{Binding IsSelectedBuiltInParameter}" Increment="0.1" FontSize="13" /></Grid>
+              <Grid ColumnDefinitions="110,*"><TextBlock x:Name="NeutralLabel" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource TextSecondary}" /><NumericUpDown x:Name="NeutralValueInput" Grid.Column="1" Value="{Binding NeutralValue, Mode=TwoWay}" IsReadOnly="{Binding IsSelectedBuiltInParameter}" Focusable="{Binding CanEditSelectedParameterMetadata}" IsHitTestVisible="{Binding CanEditSelectedParameterMetadata}" Classes.locked-input="{Binding IsSelectedBuiltInParameter}" Increment="0.1" FontSize="13" /></Grid>
+              <Grid ColumnDefinitions="110,*"><TextBlock x:Name="MaximumLabel" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource TextSecondary}" /><NumericUpDown x:Name="SuggestedMaximumInput" Grid.Column="1" Value="{Binding SuggestedMaximum, Mode=TwoWay}" IsReadOnly="{Binding IsSelectedBuiltInParameter}" Focusable="{Binding CanEditSelectedParameterMetadata}" IsHitTestVisible="{Binding CanEditSelectedParameterMetadata}" Classes.locked-input="{Binding IsSelectedBuiltInParameter}" Increment="0.1" FontSize="13" /></Grid>
+              <Grid ColumnDefinitions="110,*"><TextBlock x:Name="SmoothingLabel" VerticalAlignment="Center" FontSize="13" Foreground="{DynamicResource TextSecondary}" /><NumericUpDown x:Name="SmoothingInput" Grid.Column="1" Value="{Binding Smoothing, Mode=TwoWay}" Minimum="0" Maximum="1" Increment="0.05" FontSize="13" /></Grid>
+            </StackPanel>
+            <Grid x:Name="MiddleActionBar" Grid.Row="4" ColumnDefinitions="Auto,*,Auto,Auto,Auto" ColumnSpacing="10">
+              <Button x:Name="DeleteButton" IsEnabled="{Binding CanDeleteSelectedParameter}" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+              <Button x:Name="FormatButton" Grid.Column="2" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+              <Button x:Name="InlineCancelButton" Grid.Column="3" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+              <Button x:Name="InlineApplyButton" Grid.Column="4" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+            </Grid>
+          </Grid>
+          <Grid Grid.Column="2" RowDefinitions="*,Auto" RowSpacing="8">
+            <Border Background="{DynamicResource SurfaceFloatingHover}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" CornerRadius="8">
+              <ListBox x:Name="OutputList" ItemsSource="{Binding OutputItems}" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectedItem="{Binding SelectedOutputItem, Mode=TwoWay}">
+                <ListBox.ItemTemplate><DataTemplate><StackPanel Spacing="2"><TextBlock Text="{Binding ParameterId}" FontSize="13" TextWrapping="Wrap" /><TextBlock Text="{Binding Subtitle}" FontSize="11" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" /></StackPanel></DataTemplate></ListBox.ItemTemplate>
+              </ListBox>
+            </Border>
+            <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="8">
+              <TextBox x:Name="NewParameterId" Text="{Binding NewParameterId, Mode=TwoWay}" FontSize="13" />
+              <Button x:Name="AddParameterButton" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
+    </local:ParameterMappingEditorShell.EditorContent>
+
+    <local:ParameterMappingEditorShell.OverlayContent>
+      <Grid>
+        <Border IsVisible="{Binding IsDeleteConfirmationVisible}" Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8">
+          <Border Width="420" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+            <StackPanel Spacing="18"><TextBlock x:Name="DeleteConfirmationText" FontSize="14" TextWrapping="Wrap" Foreground="{DynamicResource TextPrimary}" /><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10"><Button x:Name="CancelDeleteButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" /><Button x:Name="ConfirmDeleteButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" /></StackPanel></StackPanel>
+          </Border>
+        </Border>
+        <Border x:Name="RestoreDefaultConfirmationOverlay" IsVisible="{Binding IsRestoreDefaultConfirmationVisible}" Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8">
+          <Border Width="460" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+            <StackPanel Spacing="18"><TextBlock x:Name="RestoreDefaultConfirmationText" FontSize="14" TextWrapping="Wrap" Foreground="{DynamicResource TextPrimary}" /><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10"><Button x:Name="CancelRestoreDefaultButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" /><Button x:Name="ConfirmRestoreDefaultButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" /></StackPanel></StackPanel>
+          </Border>
+        </Border>
+        <Border IsVisible="{Binding IsReferenceSyncConfirmationVisible}" Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8">
+          <Border Width="460" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+            <StackPanel Spacing="18"><TextBlock Text="参数名称已变更。是否扫描并同步模型、场景及映射中的引用？" FontSize="14" TextWrapping="Wrap" Foreground="{DynamicResource TextPrimary}" /><StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10"><Button x:Name="SkipReferenceSyncButton" Content="不同步" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" /><Button x:Name="ConfirmReferenceSyncButton" Content="同步引用" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" /></StackPanel></StackPanel>
+          </Border>
+        </Border>
+      </Grid>
+    </local:ParameterMappingEditorShell.OverlayContent>
+  </local:ParameterMappingEditorShell>
+</UserControl>

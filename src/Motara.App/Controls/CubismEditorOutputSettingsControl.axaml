@@ -1,0 +1,28 @@
+<UserControl
+    x:Class="Motara.App.Controls.CubismEditorOutputSettingsControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="16">
+    <StackPanel Spacing="8">
+      <TextBlock x:Name="EndpointLabel" FontSize="14" />
+      <TextBox x:Name="EndpointInput" FontSize="14" />
+    </StackPanel>
+
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+      <TextBlock x:Name="StartOnLaunchLabel" VerticalAlignment="Center" FontSize="14" />
+      <ToggleSwitch x:Name="StartOnLaunchToggle" Grid.Column="1"
+                    Theme="{DynamicResource ScreenshotToggleTheme}" />
+    </Grid>
+
+    <TextBlock x:Name="ValidationText" Grid.Row="2" MinHeight="20"
+               FontSize="13" Foreground="{DynamicResource StateFaulted}" TextWrapping="Wrap" />
+
+    <Grid Classes="workspace-footer" Grid.Row="3" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+      <Button x:Name="CancelButton" Grid.Column="1"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="ApplyButton" Grid.Column="2"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </Grid>
+  </Grid>
+</UserControl>

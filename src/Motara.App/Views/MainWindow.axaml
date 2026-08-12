@@ -1,0 +1,87 @@
+<Window
+    x:Class="Motara.App.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Motara.App.Controls"
+    Title="Motara"
+    RequestedThemeVariant="Light"
+    FontFamily="{DynamicResource ShellFontFamily}"
+    Background="Transparent"
+    TransparencyLevelHint="Transparent"
+    Width="1280"
+    Height="720">
+  <Window.Styles>
+    <FluentTheme />
+  </Window.Styles>
+  <Window.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Motara.App/Themes/LightTheme.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Window.Resources>
+  <Canvas
+      x:Name="PrimaryCanvas"
+      Background="Transparent"
+      RenderTransformOrigin="0,0">
+    <controls:BackgroundVisualControl
+        x:Name="BackgroundLayer"
+        ZIndex="-10"
+        Canvas.Left="0"
+        Canvas.Top="0"
+        IsHitTestVisible="False" />
+    <controls:ModelCanvas
+        x:Name="ModelCanvas"
+        ZIndex="0"
+        Canvas.Left="0"
+        Canvas.Top="0" />
+    <controls:SignalAttachmentVisualControl
+        x:Name="SignalAttachmentBeforeLayer"
+        ZIndex="-1"
+        Canvas.Left="0"
+        Canvas.Top="0"
+        IsHitTestVisible="False" />
+    <controls:SignalAttachmentVisualControl
+        x:Name="SignalAttachmentAfterLayer"
+        ZIndex="2"
+        Canvas.Left="0"
+        Canvas.Top="0"
+        IsHitTestVisible="False" />
+    <controls:ModelArtMeshHighlightControl
+        x:Name="ModelArtMeshHighlightLayer"
+        ZIndex="3"
+        Canvas.Left="0"
+        Canvas.Top="0" />
+    <Border
+        x:Name="ModelTransitionBlank"
+        ZIndex="1"
+        Canvas.Left="0"
+        Canvas.Top="0"
+        Background="{DynamicResource CanvasBackground}"
+        IsVisible="False"
+        IsHitTestVisible="False" />
+    <controls:RemoteModelCanvas
+        x:Name="RemoteModelCanvas"
+        ZIndex="5"
+        Canvas.Left="0"
+        Canvas.Top="0" />
+    <controls:ScreenshotPreviewOverlay
+        x:Name="ScreenshotPreviewOverlay"
+        ZIndex="20"
+        Canvas.Left="0"
+        Canvas.Top="0" />
+    <Canvas x:Name="ScaledUiCanvas" ZIndex="30" Canvas.Left="0" Canvas.Top="0"
+            RenderTransformOrigin="0,0">
+        <controls:NavigationRail x:Name="NavigationRail" ZIndex="60" Canvas.Left="18"
+                                 Canvas.Top="22" Canvas.Bottom="22" />
+        <controls:CascadingMenuWorkspace x:Name="MenuWorkspace" ZIndex="40" Canvas.Left="88"
+                                         Canvas.Top="22" />
+        <controls:ModelLibraryMenu x:Name="ModelLibraryMenu" ZIndex="40" Canvas.Left="88"
+                                    Canvas.Top="22" />
+        <controls:CollaborationMenu x:Name="CollaborationMenu" ZIndex="40" Canvas.Left="88"
+                                    Canvas.Top="22" />
+        <controls:TopLevelWorkspaceHost x:Name="TopLevelWorkspaceHost" ZIndex="100"
+                                        Canvas.Left="0" Canvas.Top="0" />
+    </Canvas>
+  </Canvas>
+</Window>

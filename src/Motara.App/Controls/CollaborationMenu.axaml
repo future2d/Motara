@@ -1,0 +1,78 @@
+<UserControl
+    x:Class="Motara.App.Controls.CollaborationMenu"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False"
+    IsVisible="False">
+  <Border Background="{DynamicResource SurfaceFloating}"
+          BorderBrush="{DynamicResource BorderSubtle}"
+          BorderThickness="1"
+          BoxShadow="{DynamicResource FloatingSurfaceShadow}"
+          CornerRadius="12"
+          Padding="18"
+          ClipToBounds="True">
+    <Grid RowDefinitions="Auto,*" RowSpacing="14">
+      <TextBlock x:Name="TitleText" FontSize="16" FontWeight="SemiBold"
+                 Foreground="{DynamicResource TextPrimary}" />
+      <Grid x:Name="ContentGrid" Grid.Row="1" RowDefinitions="*"
+            ColumnDefinitions="0.75*,1,1.15*" ColumnSpacing="16" RowSpacing="12">
+        <ScrollViewer x:Name="IdentityScroll"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+          <StackPanel Spacing="12">
+            <TextBlock x:Name="IdentityHeading" FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondary}" />
+            <Border x:Name="IdentityCard" Padding="14" CornerRadius="8" Focusable="True"
+                    Background="{DynamicResource SurfaceFloatingHover}">
+              <StackPanel Spacing="5">
+                <TextBlock x:Name="IdentityValue" FontSize="14" FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+                <TextBlock x:Name="IdentityHint" FontSize="12"
+                           Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+              </StackPanel>
+            </Border>
+            <TextBlock x:Name="SessionHeading" FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondary}" />
+            <Border x:Name="SessionCard" Padding="14" CornerRadius="8"
+                    Background="{DynamicResource SurfaceFloatingHover}">
+              <StackPanel Spacing="5">
+                <TextBlock x:Name="SessionStatus" FontSize="14" FontWeight="SemiBold"
+                           Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+                <TextBlock x:Name="SessionMembers" FontSize="12"
+                           Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+                <TextBlock x:Name="SessionTransfer" FontSize="12"
+                           Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+              </StackPanel>
+            </Border>
+            <Button x:Name="LeaveSessionButton" Theme="{DynamicResource MenuRowButtonTheme}"
+                    BorderThickness="1" FontSize="14" FontWeight="Normal" />
+            <TextBlock x:Name="InvitationsHeading" FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondary}" />
+            <StackPanel x:Name="InvitationActionsPanel" Spacing="3">
+              <Button x:Name="GenerateInviteButton" Theme="{DynamicResource MenuRowButtonTheme}"
+                      BorderThickness="1" FontSize="14" FontWeight="Normal" />
+              <Button x:Name="AcceptFriendInviteButton" Theme="{DynamicResource MenuRowButtonTheme}"
+                      BorderThickness="1" FontSize="14" FontWeight="Normal" />
+              <Button x:Name="GenerateSessionInviteButton" Theme="{DynamicResource MenuRowButtonTheme}"
+                      BorderThickness="1" FontSize="14" FontWeight="Normal" />
+              <Button x:Name="AcceptSessionInviteButton" Theme="{DynamicResource MenuRowButtonTheme}"
+                      BorderThickness="1" FontSize="14" FontWeight="Normal" />
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+        <Border x:Name="ContentDivider" Grid.Column="1" Width="1" Background="{DynamicResource DividerSubtle}" />
+        <ScrollViewer x:Name="ContactsScroll" Grid.Column="2"
+                      HorizontalScrollBarVisibility="Disabled"
+                      VerticalScrollBarVisibility="Auto">
+          <StackPanel Spacing="12">
+            <TextBlock x:Name="ContactsHeading" FontSize="12" FontWeight="SemiBold"
+                       Foreground="{DynamicResource TextSecondary}" />
+            <TextBlock x:Name="EmptyContactsText" FontSize="13"
+                       Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+            <StackPanel x:Name="ContactsPanel" Spacing="8" />
+          </StackPanel>
+        </ScrollViewer>
+      </Grid>
+    </Grid>
+  </Border>
+</UserControl>

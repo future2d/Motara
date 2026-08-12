@@ -1,0 +1,58 @@
+<UserControl
+    x:Class="Motara.App.Controls.ParameterMappingEditorShell"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid RowDefinitions="Auto,*,Auto" RowSpacing="14">
+    <ContentControl x:Name="HeaderPresenter" />
+    <ContentControl x:Name="EditorPresenter" Grid.Row="1" />
+    <Grid x:Name="ActionBar" Classes="workspace-footer" Grid.Row="2" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="8">
+      <ContentControl x:Name="FooterPresenter"
+                      HorizontalAlignment="Right"
+                      HorizontalContentAlignment="Right"
+                      VerticalContentAlignment="Center" />
+      <Button x:Name="CancelButton" Grid.Column="1"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="ApplyButton" Grid.Column="2"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </Grid>
+
+    <ContentControl x:Name="OverlayPresenter" Grid.RowSpan="3" ZIndex="10" />
+
+    <Border x:Name="CloseConfirmationOverlay" Grid.RowSpan="3" IsVisible="False"
+            Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8" ZIndex="11">
+      <Border Width="460" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center"
+              Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}"
+              BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+        <StackPanel Spacing="18">
+          <TextBlock x:Name="CloseConfirmationText" FontSize="14" TextWrapping="Wrap"
+                     Foreground="{DynamicResource TextPrimary}" />
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+            <Button x:Name="CancelCloseButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+            <Button x:Name="DiscardCloseButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+            <Button x:Name="SaveAndCloseButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Border>
+
+    <Border x:Name="ApplyResultOverlay" Grid.RowSpan="3" IsVisible="False"
+            Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8" ZIndex="12">
+      <Border Width="440" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center"
+              Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}"
+              BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+        <StackPanel Spacing="12">
+          <TextBlock x:Name="ApplyResultTitle" FontSize="14" FontWeight="SemiBold"
+                     Foreground="{DynamicResource TextPrimary}" />
+          <ScrollViewer MaxHeight="260" HorizontalScrollBarVisibility="Disabled"
+                        VerticalScrollBarVisibility="Auto">
+            <TextBlock x:Name="ApplyResultMessage" FontSize="13" TextWrapping="Wrap"
+                       Foreground="{DynamicResource TextSecondary}" />
+          </ScrollViewer>
+          <Button x:Name="AcknowledgeApplyResultButton" HorizontalAlignment="Right"
+                  Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </StackPanel>
+      </Border>
+    </Border>
+  </Grid>
+</UserControl>

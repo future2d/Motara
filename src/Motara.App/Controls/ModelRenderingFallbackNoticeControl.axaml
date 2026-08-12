@@ -1,0 +1,17 @@
+<UserControl
+    x:Class="Motara.App.Controls.ModelRenderingFallbackNoticeControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Width="560" Spacing="14">
+    <TextBlock
+        x:Name="MessageText"
+        FontSize="14"
+        Foreground="{DynamicResource TextPrimary}"
+        TextWrapping="Wrap" />
+    <TextBlock
+        x:Name="ReasonText"
+        FontSize="14"
+        Foreground="{DynamicResource TextSecondary}"
+        TextWrapping="Wrap" />
+  </StackPanel>
+</UserControl>

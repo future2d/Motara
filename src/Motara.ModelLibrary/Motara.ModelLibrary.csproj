@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../Motara.ModelRuntime.Abstractions/Motara.ModelRuntime.Abstractions.csproj" />
+    <ProjectReference Include="../Motara.Persistence/Motara.Persistence.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="SharpCompress" />
+  </ItemGroup>
+</Project>

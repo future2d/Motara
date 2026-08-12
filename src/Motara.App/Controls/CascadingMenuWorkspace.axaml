@@ -1,0 +1,12 @@
+<UserControl
+    x:Class="Motara.App.Controls.CascadingMenuWorkspace"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    IsVisible="False">
+  <UserControl.Transitions>
+    <Transitions>
+      <DoubleTransition Property="Canvas.Left" Duration="0:0:0.18" Easing="CubicEaseOut" />
+    </Transitions>
+  </UserControl.Transitions>
+  <StackPanel x:Name="Panels" Orientation="Horizontal" Spacing="10" />
+</UserControl>

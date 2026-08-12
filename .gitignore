@@ -1,25 +1,17 @@
-# Private development material
-/src/
-/tests/
+.worktrees/
 /artifacts/
+.superpowers/sdd/artifacts/
+/docs/*
+!/docs/legal/
+!/docs/legal/**
 /eng/
-/docs/internal/
-/docs/private/
-
-# Build outputs and local IDE state
-[Bb]in/
-[Oo]bj/
+/packaging/
+/.github/
+/.superpowers/
+/tests/
+.artifacts/
 .vs/
 .idea/
-*.user
-*.suo
-*.userosscache
-
-# Local diagnostics and secrets
-*.log
-.env
-.env.*
-*.pfx
-*.p12
-*.pem
-*.key
+TestResults/
+bin/
+obj/

@@ -1,0 +1,32 @@
+<UserControl
+    x:Class="Motara.App.Controls.IdentifierCompletionEditor"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:edit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit">
+  <Border
+      Background="{DynamicResource SurfaceFloating}"
+      BorderBrush="{DynamicResource BorderSubtle}"
+      BorderThickness="1"
+      CornerRadius="8"
+      Padding="8,6">
+    <Grid>
+      <edit:TextEditor
+          x:Name="Editor"
+          MinHeight="24"
+          VerticalAlignment="Center"
+          Background="Transparent"
+          BorderThickness="0"
+          FontSize="14"
+          Foreground="{DynamicResource TextPrimary}"
+          HorizontalScrollBarVisibility="Disabled"
+          VerticalScrollBarVisibility="Disabled"
+          ShowLineNumbers="False"
+          WordWrap="False" />
+      <TextBlock
+          x:Name="Placeholder"
+          VerticalAlignment="Center"
+          Foreground="{DynamicResource TextSecondary}"
+          IsHitTestVisible="False" />
+    </Grid>
+  </Border>
+</UserControl>

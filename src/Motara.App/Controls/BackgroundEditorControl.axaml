@@ -1,0 +1,153 @@
+<UserControl
+    x:Class="Motara.App.Controls.BackgroundEditorControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Motara.App.Controls"
+    x:CompileBindings="False">
+  <UserControl.Styles>
+    <Style Selector="Button.recent-background-item">
+      <Setter Property="Theme" Value="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Setter Property="HorizontalAlignment" Value="Stretch" />
+      <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+  </UserControl.Styles>
+  <UserControl.Resources>
+    <ControlTheme x:Key="BackgroundEditorCheckBoxTheme" TargetType="CheckBox">
+      <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+      <Setter Property="Padding" Value="8,0,0,0" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Grid ColumnDefinitions="18,*" MinHeight="32">
+            <Border x:Name="CheckBoxIndicator" Width="16" Height="16"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Background="{DynamicResource SurfaceFloating}"
+                    BorderBrush="{DynamicResource BorderSubtle}"
+                    BorderThickness="1" CornerRadius="3">
+              <Path x:Name="CheckBoxGlyph" Width="11" Height="8"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Data="M 1,4 L 4,7 L 10,1"
+                    Stroke="{DynamicResource TextOnAccent}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    StrokeJoin="Round"
+                    Stretch="Uniform"
+                    IsHitTestVisible="False"
+                    Opacity="0" />
+            </Border>
+            <ContentPresenter Grid.Column="1" VerticalAlignment="Center"
+                              Margin="{TemplateBinding Padding}"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Foreground="{TemplateBinding Foreground}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter>
+      <Style Selector="^:checked /template/ Border#CheckBoxIndicator">
+        <Setter Property="Background" Value="{DynamicResource CategoryApricot}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CategoryApricot}" />
+      </Style>
+      <Style Selector="^:checked /template/ Path#CheckBoxGlyph">
+        <Setter Property="Opacity" Value="1" />
+      </Style>
+      <Style Selector="^:pointerover /template/ Border#CheckBoxIndicator">
+        <Setter Property="BorderBrush" Value="{DynamicResource CategoryApricot}" />
+      </Style>
+      <Style Selector="^:disabled">
+        <Setter Property="Opacity" Value="0.46" />
+      </Style>
+    </ControlTheme>
+  </UserControl.Resources>
+  <StackPanel Spacing="18">
+    <TabControl x:Name="TypeTabs" Classes="background-editor-tabs workspace-header"
+                Background="Transparent" BorderBrush="Transparent" BorderThickness="0">
+      <TabItem x:Name="SolidTab">
+        <TabItem.Header><TextBlock x:Name="SolidTabText" /></TabItem.Header>
+      </TabItem>
+      <TabItem x:Name="ImageTab">
+        <TabItem.Header><TextBlock x:Name="ImageTabText" /></TabItem.Header>
+      </TabItem>
+      <TabItem x:Name="VideoTab">
+        <TabItem.Header><TextBlock x:Name="VideoTabText" /></TabItem.Header>
+      </TabItem>
+      <TabItem x:Name="Spout2Tab">
+        <TabItem.Header><TextBlock x:Name="Spout2TabText" /></TabItem.Header>
+      </TabItem>
+      <TabItem x:Name="NdiTab">
+        <TabItem.Header><TextBlock x:Name="NdiTabText" /></TabItem.Header>
+      </TabItem>
+    </TabControl>
+
+    <StackPanel x:Name="EditorBody" Spacing="18">
+        <StackPanel x:Name="SolidEditor" Spacing="12">
+          <controls:BackgroundColorAdjustmentsControl x:Name="ColorAdjustments" />
+          <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+            <Border x:Name="ColorSwatch" Width="42" Height="32" VerticalAlignment="Center"
+                    BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" CornerRadius="4" />
+            <TextBox x:Name="SolidColorInput" Grid.Column="1" MaxLength="9" FontFamily="Consolas"
+                     PlaceholderText="#RRGGBB or #RRGGBBAA" />
+          </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="ImageEditor" Spacing="12" IsVisible="False">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBlock x:Name="ImageStatusText" VerticalAlignment="Center" TextWrapping="Wrap" />
+            <Button x:Name="ChooseImageButton" Grid.Column="1"
+                    Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </Grid>
+          <StackPanel x:Name="RecentImageSection" Spacing="6" IsVisible="False">
+            <TextBlock x:Name="RecentImageLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+            <StackPanel x:Name="RecentImageItems" Spacing="6" />
+          </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="VideoEditor" Spacing="12" IsVisible="False">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+            <TextBlock x:Name="VideoStatusText" VerticalAlignment="Center" TextWrapping="Wrap" />
+            <Button x:Name="ChooseVideoButton" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </Grid>
+          <StackPanel x:Name="RecentVideoSection" Spacing="6" IsVisible="False">
+            <TextBlock x:Name="RecentVideoLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+            <StackPanel x:Name="RecentVideoItems" Spacing="6" />
+          </StackPanel>
+          <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" ColumnSpacing="12" RowSpacing="8">
+            <CheckBox x:Name="EnableVideoAlphaCheckBox" Grid.ColumnSpan="2" Theme="{DynamicResource BackgroundEditorCheckBoxTheme}" />
+            <CheckBox x:Name="LoopVideoCheckBox" Grid.Row="1" Grid.ColumnSpan="2" Theme="{DynamicResource BackgroundEditorCheckBoxTheme}" />
+            <TextBlock x:Name="VideoSpeedLabel" Grid.Row="2" VerticalAlignment="Center" />
+            <NumericUpDown x:Name="VideoSpeedInput" Grid.Row="2" Grid.Column="1" Minimum="0.1" Maximum="8" Increment="0.05" FormatString="0.##" ShowButtonSpinner="False" />
+            <TextBlock x:Name="FfmpegArgumentsLabel" Grid.Row="3" VerticalAlignment="Center" />
+            <TextBox x:Name="FfmpegArgumentsInput" Grid.Row="3" Grid.Column="1" PlaceholderText="-threads 2 -vf &quot;...&quot;" />
+          </Grid>
+        </StackPanel>
+
+        <StackPanel x:Name="SignalEditor" Spacing="6" IsVisible="False">
+          <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+            <ComboBox x:Name="SignalSourceComboBox" MinHeight="32" />
+            <Button x:Name="RefreshSignalButton" Grid.Column="1"
+                    Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </Grid>
+          <TextBlock x:Name="SignalStatusText" TextWrapping="Wrap" />
+        </StackPanel>
+
+        <StackPanel x:Name="LayoutEditor" Spacing="8">
+          <TextBlock x:Name="LayoutLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+          <UniformGrid x:Name="LayoutModes" Columns="5" Rows="1">
+            <ToggleButton x:Name="FillLayoutButton" Margin="0,0,4,0" MinHeight="32" Height="32" Padding="10,4" Theme="{DynamicResource BackgroundEditorSegmentTheme}" />
+            <ToggleButton x:Name="FitLayoutButton" Margin="0,0,4,0" MinHeight="32" Height="32" Padding="10,4" Theme="{DynamicResource BackgroundEditorSegmentTheme}" />
+            <ToggleButton x:Name="StretchLayoutButton" Margin="0,0,4,0" MinHeight="32" Height="32" Padding="10,4" Theme="{DynamicResource BackgroundEditorSegmentTheme}" />
+            <ToggleButton x:Name="CenterLayoutButton" Margin="0,0,4,0" MinHeight="32" Height="32" Padding="10,4" Theme="{DynamicResource BackgroundEditorSegmentTheme}" />
+            <ToggleButton x:Name="TileLayoutButton" MinHeight="32" Height="32" Padding="10,4" Theme="{DynamicResource BackgroundEditorSegmentTheme}" />
+          </UniformGrid>
+        </StackPanel>
+    </StackPanel>
+
+    <Grid Classes="workspace-footer" RowDefinitions="Auto,Auto" RowSpacing="8">
+      <TextBlock x:Name="StatusText" MinHeight="20" FontSize="13"
+                 Foreground="{DynamicResource StateFaulted}" TextWrapping="Wrap" />
+      <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="10">
+        <Button x:Name="ResetButton" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+        <Button x:Name="CancelButton" Grid.Column="2" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+        <Button x:Name="ApplyButton" Grid.Column="3" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+      </Grid>
+    </Grid>
+  </StackPanel>
+</UserControl>

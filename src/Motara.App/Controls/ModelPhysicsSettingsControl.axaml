@@ -1,0 +1,67 @@
+<UserControl
+    x:Class="Motara.App.Controls.ModelPhysicsSettingsControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Motara.App.Controls"
+    x:CompileBindings="False">
+  <controls:ParameterMappingEditorShell x:Name="EditorShell" IsActionBarVisible="True">
+    <controls:ParameterMappingEditorShell.EditorContent>
+      <StackPanel Spacing="16">
+        <ToggleSwitch x:Name="Enabled" IsChecked="{Binding IsEnabled}"
+                      Theme="{DynamicResource MenuRowToggleTheme}" />
+        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="14">
+          <StackPanel Spacing="7" IsEnabled="{Binding IsEnabled}">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock x:Name="StrengthLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+              <NumericUpDown Grid.Column="1" Width="86" Minimum="0" Maximum="100" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding Strength}" />
+            </Grid>
+            <Slider Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding Strength}" Theme="{DynamicResource ScreenshotSliderTheme}" />
+          </StackPanel>
+          <StackPanel Grid.Column="1" Spacing="7" IsEnabled="{Binding IsEnabled}">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock x:Name="WindSimulationLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+              <NumericUpDown Grid.Column="1" Width="86" Minimum="0" Maximum="100" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding WindSimulation}" />
+            </Grid>
+            <Slider Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding WindSimulation}" Theme="{DynamicResource ScreenshotSliderTheme}" />
+          </StackPanel>
+          <StackPanel Grid.Column="2" Spacing="7" IsEnabled="{Binding IsEnabled}">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock x:Name="DragPhysicsLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+              <NumericUpDown Grid.Column="1" Width="86" Minimum="0" Maximum="100" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding DragPhysics}" />
+            </Grid>
+            <Slider Minimum="0" Maximum="100" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding DragPhysics}" Theme="{DynamicResource ScreenshotSliderTheme}" />
+          </StackPanel>
+        </Grid>
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="14" IsEnabled="{Binding IsEnabled}">
+          <TextBlock x:Name="CalculationFrameRateLabel" VerticalAlignment="Center" FontSize="13" />
+          <ComboBox x:Name="CalculationFrameRateSelector" Grid.Column="1" Width="180" />
+        </Grid>
+        <ToggleSwitch x:Name="MotionExpansionEnabled" IsChecked="{Binding MotionExpansionEnabled}"
+                      Theme="{DynamicResource MenuRowToggleTheme}" />
+        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="14" IsEnabled="{Binding MotionExpansionEnabled}">
+          <StackPanel Spacing="7">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock x:Name="MotionExpansionXLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+              <NumericUpDown Grid.Column="1" Width="86" Minimum="0" Maximum="20" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding MotionExpansionX}" />
+            </Grid>
+            <Slider Minimum="0" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding MotionExpansionX}" Theme="{DynamicResource ScreenshotSliderTheme}" />
+          </StackPanel>
+          <StackPanel Grid.Column="1" Spacing="7">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock x:Name="MotionExpansionYLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+              <NumericUpDown Grid.Column="1" Width="86" Minimum="0" Maximum="20" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding MotionExpansionY}" />
+            </Grid>
+            <Slider Minimum="0" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding MotionExpansionY}" Theme="{DynamicResource ScreenshotSliderTheme}" />
+          </StackPanel>
+          <StackPanel Grid.Column="2" Spacing="7">
+            <Grid ColumnDefinitions="*,Auto">
+              <TextBlock x:Name="MotionExpansionZLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+              <NumericUpDown Grid.Column="1" Width="86" Minimum="0" Maximum="20" Increment="1" FormatString="0" ShowButtonSpinner="False" Value="{Binding MotionExpansionZ}" />
+            </Grid>
+            <Slider Minimum="0" Maximum="20" TickFrequency="1" IsSnapToTickEnabled="True" Value="{Binding MotionExpansionZ}" Theme="{DynamicResource ScreenshotSliderTheme}" />
+          </StackPanel>
+        </Grid>
+      </StackPanel>
+    </controls:ParameterMappingEditorShell.EditorContent>
+  </controls:ParameterMappingEditorShell>
+</UserControl>

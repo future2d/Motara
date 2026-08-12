@@ -1,0 +1,15 @@
+<Solution>
+  <Project Path="src/Motara.App/Motara.App.csproj" />
+  <Project Path="src/Motara.Collaboration/Motara.Collaboration.csproj" />
+  <Project Path="src/Motara.Core/Motara.Core.csproj" />
+  <Project Path="src/Motara.ModelLibrary/Motara.ModelLibrary.csproj" />
+  <Project Path="src/Motara.Media/Motara.Media.csproj" />
+  <Project Path="src/Motara.ModelRuntime.Abstractions/Motara.ModelRuntime.Abstractions.csproj" />
+  <Project Path="src/Motara.ModelRuntime.PurismCore/Motara.ModelRuntime.PurismCore.csproj" />
+  <Project Path="src/Motara.Output.Abstractions/Motara.Output.Abstractions.csproj" />
+  <Project Path="src/Motara.Output.CubismEditor/Motara.Output.CubismEditor.csproj" />
+  <Project Path="src/Motara.Persistence/Motara.Persistence.csproj" />
+  <Project Path="src/Motara.Scene/Motara.Scene.csproj" />
+  <Project Path="src/Motara.Tracking.Abstractions/Motara.Tracking.Abstractions.csproj" />
+  <Project Path="src/Motara.Tracking.iFacialMocap/Motara.Tracking.iFacialMocap.csproj" />
+</Solution>

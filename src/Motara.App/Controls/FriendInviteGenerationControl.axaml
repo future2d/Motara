@@ -1,0 +1,13 @@
+<UserControl x:Class="Motara.App.Controls.FriendInviteGenerationControl"
+             xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <StackPanel Width="560" Spacing="16">
+    <TextBlock x:Name="SummaryText" FontSize="14" Foreground="{DynamicResource TextSecondary}"
+               TextWrapping="Wrap" />
+    <TextBlock x:Name="InvitationLink" FontSize="13" TextWrapping="Wrap" />
+    <StackPanel Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+      <Button x:Name="CloseButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="CopyButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

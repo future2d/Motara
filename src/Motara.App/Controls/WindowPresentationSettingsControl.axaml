@@ -1,0 +1,39 @@
+<UserControl
+    x:Class="Motara.App.Controls.WindowPresentationSettingsControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <StackPanel HorizontalAlignment="Stretch" Spacing="16">
+    <Grid ColumnDefinitions="Auto,100,Auto,100,*"
+          RowDefinitions="Auto,Auto,Auto"
+          ColumnSpacing="10"
+          RowSpacing="16">
+      <TextBlock x:Name="WidthLabel" VerticalAlignment="Center" FontSize="14" />
+      <TextBox x:Name="WidthInput" Grid.Column="1" FontSize="14" />
+      <TextBlock x:Name="HeightLabel" Grid.Column="2" VerticalAlignment="Center" FontSize="14" />
+      <TextBox x:Name="HeightInput" Grid.Column="3" FontSize="14" />
+
+      <TextBlock x:Name="ScaleLabel" Grid.Row="1" VerticalAlignment="Center" FontSize="14" />
+      <ComboBox x:Name="ScaleSelector" Grid.Row="1" Grid.Column="1" />
+      <TextBlock x:Name="ScaleHint" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 FontSize="12" Foreground="{DynamicResource TextSecondary}"
+                 TextAlignment="Right" TextWrapping="Wrap" />
+
+      <TextBlock x:Name="FrameRateLabel" Grid.Row="2" VerticalAlignment="Center" FontSize="14" />
+      <ComboBox x:Name="FrameRateSelector" Grid.Row="2" Grid.Column="1" />
+      <TextBlock x:Name="FrameRateHint" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"
+                 HorizontalAlignment="Right" VerticalAlignment="Center"
+                 FontSize="12" Foreground="{DynamicResource TextSecondary}"
+                 TextAlignment="Right" TextWrapping="Wrap" />
+    </Grid>
+    <Grid Classes="workspace-footer" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+      <TextBlock x:Name="StatusText" VerticalAlignment="Center" FontSize="13"
+                 Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+      <Button x:Name="RestoreDefaultsButton" Grid.Column="1"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="ApplyButton" Grid.Column="2"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </Grid>
+  </StackPanel>
+</UserControl>

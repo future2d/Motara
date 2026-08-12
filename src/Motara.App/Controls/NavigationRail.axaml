@@ -1,0 +1,36 @@
+<UserControl
+    x:Class="Motara.App.Controls.NavigationRail"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Motara.App.Controls"
+    Background="Transparent">
+  <Border
+      x:Name="NavigationSurface"
+      Background="{DynamicResource SurfaceFloating}"
+      BorderBrush="{DynamicResource BorderSubtle}"
+      BorderThickness="1"
+      BoxShadow="{DynamicResource FloatingSurfaceShadow}"
+      ClipToBounds="True"
+      CornerRadius="14">
+    <Border
+        x:Name="NavigationClip"
+        ClipToBounds="True"
+        CornerRadius="13"
+        Padding="6,8">
+      <Grid RowDefinitions="*,Auto">
+        <Grid x:Name="DestinationButtons" RowSpacing="8" ColumnSpacing="8" />
+        <Button
+            x:Name="CloseButton"
+            Grid.Row="1"
+            Theme="{DynamicResource ShellIconButtonTheme}"
+            AutomationProperties.AutomationId="navigation.close">
+          <controls:LucideIcon
+              Width="20"
+              Height="20"
+              Data="{DynamicResource Icon.Lucide.X}"
+              Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
+        </Button>
+      </Grid>
+    </Border>
+  </Border>
+</UserControl>

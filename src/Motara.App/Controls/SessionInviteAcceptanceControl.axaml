@@ -1,0 +1,32 @@
+<UserControl
+    x:Class="Motara.App.Controls.SessionInviteAcceptanceControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <StackPanel Spacing="14">
+    <Border Padding="14" CornerRadius="8" Background="{DynamicResource SurfaceFloatingHover}">
+      <StackPanel Spacing="6">
+        <TextBlock x:Name="HostText" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+        <TextBlock x:Name="PolicyText" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+        <TextBlock x:Name="ExpiryText" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+      </StackPanel>
+    </Border>
+    <Border Padding="14" CornerRadius="8" Background="{DynamicResource SurfaceFloatingHover}">
+      <TextBlock x:Name="StatusText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+    </Border>
+    <Border x:Name="DistributionConsentPanel" IsVisible="False" Padding="14" CornerRadius="8"
+            Background="{DynamicResource SurfaceFloatingHover}">
+      <StackPanel Spacing="10">
+        <TextBlock x:Name="DistributionConsentText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+          <Button x:Name="DeclineDistributionButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          <Button x:Name="ConfirmDistributionButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+    <StackPanel Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right">
+      <Button x:Name="JoinButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="AcknowledgeButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

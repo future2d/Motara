@@ -1,0 +1,60 @@
+<UserControl
+    x:Class="Motara.App.Controls.FriendDetailsControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid>
+    <StackPanel Spacing="14">
+        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+          <StackPanel Spacing="4">
+            <TextBlock x:Name="IdentityText" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+            <TextBlock x:Name="TrustText" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+          </StackPanel>
+          <Button x:Name="CloseButton" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </Grid>
+
+        <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+          <StackPanel Spacing="6">
+            <TextBlock x:Name="NameLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+            <TextBox x:Name="NameInput" FontSize="14" MaxLength="80" />
+          </StackPanel>
+          <StackPanel Grid.Column="1" Spacing="6">
+            <TextBlock x:Name="NoteLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+            <TextBox x:Name="NoteInput" FontSize="14" MaxLength="500" />
+          </StackPanel>
+        </Grid>
+        <Button x:Name="SaveButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" HorizontalAlignment="Left" />
+
+        <Border Height="1" Background="{DynamicResource DividerSubtle}" />
+
+        <StackPanel x:Name="HandshakePanel" Spacing="10">
+          <TextBlock x:Name="HandshakeHeading" FontSize="14" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimary}" />
+          <Button x:Name="CreateOfferButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" HorizontalAlignment="Left" />
+          <TextBox x:Name="OfferOutput" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="72" MaxHeight="120" />
+          <TextBlock x:Name="IncomingLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+          <TextBox x:Name="IncomingInput" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="72" MaxHeight="120" />
+          <StackPanel Orientation="Horizontal" Spacing="10">
+            <Button x:Name="AcceptOfferButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+            <Button x:Name="CompleteOfferButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          </StackPanel>
+          <TextBox x:Name="ResponseOutput" IsReadOnly="True" AcceptsReturn="True" TextWrapping="Wrap" MinHeight="72" MaxHeight="120" />
+        </StackPanel>
+
+        <TextBlock x:Name="StatusText" MinHeight="20" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+        <StackPanel Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+          <Button x:Name="BlockButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          <Button x:Name="DeleteButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </StackPanel>
+    </StackPanel>
+
+    <Border x:Name="ConfirmationOverlay" IsVisible="False" Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8" Padding="18">
+      <StackPanel VerticalAlignment="Center" Spacing="18">
+        <TextBlock x:Name="ConfirmationText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+          <Button x:Name="CancelConfirmationButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          <Button x:Name="ConfirmActionButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

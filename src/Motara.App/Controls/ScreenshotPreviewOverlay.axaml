@@ -1,0 +1,24 @@
+<UserControl
+    x:Class="Motara.App.Controls.ScreenshotPreviewOverlay"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Grid Background="Transparent">
+    <Border x:Name="CountdownBadge"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            IsVisible="False" Padding="20,12"
+            Background="{DynamicResource SurfaceFloating}"
+            BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1"
+            BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="8">
+      <TextBlock x:Name="CountdownText" FontSize="28"
+                 Foreground="{DynamicResource TextPrimary}" />
+    </Border>
+    <Border x:Name="PreviewFrame"
+            Margin="48" Padding="8" IsVisible="False"
+            HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+            Background="{DynamicResource SurfaceFloating}"
+            BorderBrush="{DynamicResource FocusRing}" BorderThickness="2"
+            BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="8">
+      <Image x:Name="PreviewImage" Stretch="Uniform" />
+    </Border>
+  </Grid>
+</UserControl>

@@ -1,0 +1,17 @@
+<UserControl
+    x:Class="Motara.App.Controls.SessionInviteEntryControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <StackPanel Width="560" Spacing="14">
+    <TextBlock x:Name="SummaryText" FontSize="14" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+    <TextBlock x:Name="InviteLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+    <TextBox x:Name="InviteInput" FontSize="14" AcceptsReturn="False" />
+    <TextBlock x:Name="ValidationText" MinHeight="20" FontSize="12"
+               Foreground="{DynamicResource StatusError}" TextWrapping="Wrap" />
+    <StackPanel Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+      <Button x:Name="CancelButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="ConfirmButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

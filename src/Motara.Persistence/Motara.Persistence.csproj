@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <ProjectReference Include="../Motara.Media/Motara.Media.csproj" />
+    <ProjectReference Include="../Motara.ModelRuntime.Abstractions/Motara.ModelRuntime.Abstractions.csproj" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+</Project>

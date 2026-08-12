@@ -1,0 +1,39 @@
+<UserControl
+    x:Class="Motara.App.Controls.OpenSeeFaceConfigurationControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Focusable="True">
+  <StackPanel Width="640" Spacing="12">
+    <TextBlock x:Name="CameraLabel" FontSize="14" Foreground="{DynamicResource TextSecondary}" />
+    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+      <ComboBox x:Name="CameraSelector" Grid.Column="0" FontSize="14">
+        <ComboBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding}" />
+          </DataTemplate>
+        </ComboBox.ItemTemplate>
+      </ComboBox>
+      <Button x:Name="RefreshButton" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </Grid>
+    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+      <StackPanel Grid.Column="0" Spacing="6">
+        <TextBlock x:Name="WidthLabel" FontSize="14" Foreground="{DynamicResource TextSecondary}" />
+        <TextBox x:Name="WidthInput" FontSize="14" />
+      </StackPanel>
+      <StackPanel Grid.Column="1" Spacing="6">
+        <TextBlock x:Name="HeightLabel" FontSize="14" Foreground="{DynamicResource TextSecondary}" />
+        <TextBox x:Name="HeightInput" FontSize="14" />
+      </StackPanel>
+      <StackPanel Grid.Column="2" Spacing="6">
+        <TextBlock x:Name="FpsLabel" FontSize="14" Foreground="{DynamicResource TextSecondary}" />
+        <TextBox x:Name="FpsInput" FontSize="14" />
+      </StackPanel>
+    </Grid>
+    <TextBlock x:Name="Hint" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+    <TextBlock x:Name="Error" MinHeight="20" FontSize="14" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+    <StackPanel Classes="workspace-footer" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="10">
+      <Button x:Name="Cancel" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="Save" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

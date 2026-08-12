@@ -1,0 +1,150 @@
+<UserControl
+    x:Class="Motara.App.Controls.TopLevelWorkspaceHost"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Motara.App.Controls"
+    Focusable="True"
+    IsVisible="False"
+    KeyboardNavigation.TabNavigation="Cycle">
+  <UserControl.Styles>
+    <Style Selector="TabControl.background-editor-tabs">
+      <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+      <Setter Property="Background" Value="Transparent" />
+      <Setter Property="BorderBrush" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="0" />
+    </Style>
+    <Style Selector="TabControl.background-editor-tabs TabItem">
+      <Setter Property="Padding" Value="16,9" />
+      <Setter Property="FontSize" Value="13" />
+    </Style>
+    <Style Selector="TabControl.background-editor-tabs TabItem:disabled">
+      <Setter Property="Opacity" Value="0.42" />
+    </Style>
+    <Style Selector="TabControl.background-editor-tabs TabItem:selected /template/ Border#PART_SelectedPipe">
+      <Setter Property="Background" Value="{DynamicResource CategoryApricot}" />
+    </Style>
+    <Style Selector="Button.signal-attachment-action">
+      <Setter Property="Theme" Value="{DynamicResource WorkspaceActionButtonTheme}" />
+    </Style>
+    <Style Selector="Button.workspace-action">
+      <Setter Property="Theme" Value="{DynamicResource WorkspaceActionButtonTheme}" />
+    </Style>
+    <Style Selector="Button.recent-background-item">
+      <Setter Property="Theme" Value="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Setter Property="HorizontalAlignment" Value="Stretch" />
+      <Setter Property="HorizontalContentAlignment" Value="Left" />
+    </Style>
+    <Style Selector="CheckBox.scene-attachment-option">
+      <Setter Property="Theme" Value="{DynamicResource SceneAttachmentCheckBoxTheme}" />
+    </Style>
+  </UserControl.Styles>
+  <UserControl.Resources>
+    <ControlTheme x:Key="SceneAttachmentCheckBoxTheme" TargetType="CheckBox">
+      <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+      <Setter Property="Padding" Value="8,0,0,0" />
+      <Setter Property="Template">
+        <ControlTemplate>
+          <Grid ColumnDefinitions="18,*" MinHeight="32">
+            <Border x:Name="CheckBoxIndicator" Width="16" Height="16"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    Background="{DynamicResource SurfaceFloating}"
+                    BorderBrush="{DynamicResource BorderSubtle}"
+                    BorderThickness="1" CornerRadius="3">
+              <Path x:Name="CheckBoxGlyph" Width="11" Height="8"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Data="M 1,4 L 4,7 L 10,1"
+                    Stroke="{DynamicResource TextOnAccent}"
+                    StrokeThickness="2"
+                    StrokeLineCap="Round"
+                    StrokeJoin="Round"
+                    Stretch="Uniform"
+                    Opacity="0"
+                    IsHitTestVisible="False" />
+            </Border>
+            <ContentPresenter Grid.Column="1"
+                              VerticalContentAlignment="Center"
+                              Content="{TemplateBinding Content}"
+                              ContentTemplate="{TemplateBinding ContentTemplate}"
+                              Foreground="{TemplateBinding Foreground}" />
+          </Grid>
+        </ControlTemplate>
+      </Setter>
+      <Style Selector="^:checked /template/ Border#CheckBoxIndicator">
+        <Setter Property="Background" Value="{DynamicResource CategoryApricot}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource CategoryApricot}" />
+      </Style>
+      <Style Selector="^:checked /template/ Path#CheckBoxGlyph">
+        <Setter Property="Opacity" Value="1" />
+      </Style>
+      <Style Selector="^:pointerover /template/ Border#CheckBoxIndicator">
+        <Setter Property="BorderBrush" Value="{DynamicResource CategoryApricot}" />
+      </Style>
+      <Style Selector="^:disabled">
+        <Setter Property="Opacity" Value="0.46" />
+      </Style>
+    </ControlTheme>
+  </UserControl.Resources>
+  <Border
+      x:Name="WorkspaceInputShield"
+      Background="Transparent"
+      IsHitTestVisible="True">
+    <Border
+        x:Name="WorkspacePanel"
+        Width="640"
+        MaxWidth="720"
+        Padding="24"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Background="{DynamicResource SurfaceFloating}"
+        BorderBrush="{DynamicResource BorderSubtle}"
+        BorderThickness="1"
+        BoxShadow="{DynamicResource FloatingSurfaceShadow}"
+        CornerRadius="12">
+      <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Grid ColumnDefinitions="*,Auto">
+          <TextBlock
+              x:Name="WorkspaceTitle"
+              VerticalAlignment="Center"
+              FontSize="20"
+              FontWeight="SemiBold"
+              Foreground="{DynamicResource TextPrimary}" />
+          <Button
+              x:Name="CloseButton"
+              Grid.Column="1"
+              Theme="{DynamicResource ShellIconButtonTheme}"
+              Width="44"
+              Height="44">
+            <controls:LucideIcon
+                Width="20"
+                Height="20"
+                Data="{DynamicResource Icon.Lucide.X}"
+                Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
+          </Button>
+        </Grid>
+        <ContentControl
+            x:Name="WorkspaceHeader"
+            Grid.Row="1"
+            Margin="0,16,0,0"
+            HorizontalContentAlignment="Stretch"
+            IsVisible="False" />
+        <ScrollViewer
+            x:Name="WorkspaceScroll"
+            Grid.Row="2"
+            Margin="0,24,0,0"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+          <ContentControl
+              x:Name="WorkspaceContent"
+              HorizontalContentAlignment="Stretch"
+              VerticalContentAlignment="Top" />
+        </ScrollViewer>
+        <ContentControl
+            x:Name="WorkspaceFooter"
+            Grid.Row="3"
+            Margin="0,16,0,0"
+            HorizontalContentAlignment="Stretch"
+            IsVisible="False" />
+      </Grid>
+    </Border>
+  </Border>
+</UserControl>

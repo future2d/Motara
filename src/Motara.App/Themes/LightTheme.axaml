@@ -1,0 +1,581 @@
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceInclude Source="avares://Motara.App/Assets/Icons/LucideIcons.axaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+  <FontFamily x:Key="ShellFontFamily">Segoe UI, Microsoft YaHei UI</FontFamily>
+  <x:Double x:Key="ShellFontSizeCaption">10</x:Double>
+  <x:Double x:Key="ShellFontSizeSmall">11</x:Double>
+  <x:Double x:Key="ShellFontSizeBody">12</x:Double>
+  <x:Double x:Key="ShellFontSizeTitle">14</x:Double>
+  <BoxShadows x:Key="FloatingSurfaceShadow">0 12 32 0 #1F53423E, 0 2 8 0 #1453423E</BoxShadows>
+  <BoxShadows x:Key="TooltipElevation">0 8 18 0 #2E433632</BoxShadows>
+
+  <ControlTheme x:Key="ShellToolTipTheme" TargetType="ToolTip">
+    <Setter Property="Padding" Value="10,7" />
+    <Setter Property="Background" Value="{DynamicResource TooltipSurface}" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource TooltipBorder}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="FontSize" Value="12" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border
+            Padding="{TemplateBinding Padding}"
+            Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            BoxShadow="{DynamicResource TooltipElevation}"
+            CornerRadius="{TemplateBinding CornerRadius}">
+          <ContentPresenter Content="{TemplateBinding Content}" />
+        </Border>
+      </ControlTemplate>
+    </Setter>
+    <Setter Property="Transitions">
+      <Transitions>
+        <DoubleTransition Property="Opacity" Duration="0:0:0.15" Easing="CubicEaseOut" />
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+  </ControlTheme>
+
+  <ControlTheme x:Key="ShellIconButtonTheme" TargetType="Button">
+    <Setter Property="Width" Value="44" />
+    <Setter Property="Height" Value="44" />
+    <Setter Property="Padding" Value="10" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource IconDefault}" />
+    <Setter Property="CornerRadius" Value="9" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="Foreground" Duration="0:0:0.18" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingHoverBorder}" />
+      <Setter Property="Foreground" Value="{DynamicResource IconActive}" />
+    </Style>
+    <Style Selector="^:pressed">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+    </Style>
+    <Style Selector="^:checked">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingSelectedBorder}" />
+      <Setter Property="Foreground" Value="{DynamicResource IconActive}" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ ContentPresenter">
+      <Setter Property="BorderBrush" Value="{DynamicResource FocusRing}" />
+      <Setter Property="BorderThickness" Value="3" />
+    </Style>
+  </ControlTheme>
+  <ControlTheme x:Key="WorkspaceActionButtonTheme" TargetType="Button">
+    <Setter Property="MinHeight" Value="36" />
+    <Setter Property="Padding" Value="14,7" />
+    <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.18" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingHoverBorder}" />
+    </Style>
+    <Style Selector="^:pressed">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingSelectedBorder}" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ ContentPresenter">
+      <Setter Property="BorderBrush" Value="{DynamicResource FocusRing}" />
+      <Setter Property="BorderThickness" Value="3" />
+    </Style>
+  </ControlTheme>
+  <ControlTheme x:Key="BackgroundEditorSegmentTheme" TargetType="ToggleButton">
+    <Setter Property="MinHeight" Value="48" />
+    <Setter Property="Padding" Value="12,8" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource BorderSubtle}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="CornerRadius" Value="7" />
+    <Setter Property="FontSize" Value="13" />
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingHoverBorder}" />
+    </Style>
+    <Style Selector="^:pressed">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+    </Style>
+    <Style Selector="^:checked">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingSelectedBorder}" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ ContentPresenter">
+      <Setter Property="BorderBrush" Value="{DynamicResource FocusRing}" />
+      <Setter Property="BorderThickness" Value="3" />
+    </Style>
+  </ControlTheme>
+  <ControlTheme x:Key="MenuRowButtonTheme" TargetType="Button">
+    <Setter Property="MinHeight" Value="42" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="Padding" Value="9,7" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="Foreground" Duration="0:0:0.18" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+    </Style>
+    <Style Selector="^:pressed">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+    </Style>
+    <Style Selector="^.selected">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource MenuRowSelectedBorder}" />
+    </Style>
+    <Style Selector="^.warning">
+      <Setter Property="BorderBrush" Value="{DynamicResource StateDegraded}" />
+    </Style>
+    <Style Selector="^.dragging">
+      <Setter Property="BorderBrush" Value="{DynamicResource CategoryApricot}" />
+      <Setter Property="BorderThickness" Value="2" />
+      <Setter Property="Opacity" Value="0.72" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ ContentPresenter">
+      <Setter Property="BorderBrush" Value="{DynamicResource FocusRing}" />
+      <Setter Property="BorderThickness" Value="3" />
+    </Style>
+  </ControlTheme>
+
+  <ControlTheme x:Key="MenuRowToggleTheme" TargetType="ToggleSwitch">
+    <Setter Property="MinHeight" Value="42" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="Padding" Value="9,7" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.18" Easing="CubicEaseOut" />
+        <BrushTransition Property="Foreground" Duration="0:0:0.18" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+    <Setter Property="KnobTransitions">
+      <Transitions>
+        <DoubleTransition Property="Canvas.Left" Duration="0:0:0.2" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid>
+          <Border
+              x:Name="MenuToggleSurface"
+              Padding="{TemplateBinding Padding}"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="{TemplateBinding CornerRadius}"
+              TemplatedControl.IsTemplateFocusTarget="True">
+            <Grid ColumnDefinitions="*,12,40">
+              <ContentPresenter
+                  x:Name="PART_ContentPresenter"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Center"
+                  Content="{TemplateBinding Content}"
+                  ContentTemplate="{TemplateBinding ContentTemplate}" />
+              <Grid Grid.Column="2" Width="40" Height="20" VerticalAlignment="Center">
+                <Border
+                    x:Name="OuterBorder"
+                    Background="{DynamicResource MeterTrack}"
+                    BorderBrush="{DynamicResource BorderSubtle}"
+                    BorderThickness="1"
+                    CornerRadius="10" />
+                <Border
+                    x:Name="SwitchKnobBounds"
+                    Background="{DynamicResource CategorySage}"
+                    BorderBrush="{DynamicResource StateConnected}"
+                    BorderThickness="1"
+                    CornerRadius="10"
+                    Opacity="0" />
+                <Canvas
+                    x:Name="PART_SwitchKnob"
+                    Width="20"
+                    Height="20"
+                    HorizontalAlignment="Left">
+                  <Grid x:Name="PART_MovingKnobs" Width="20" Height="20">
+                    <Ellipse
+                        x:Name="SwitchKnobOff"
+                        Width="10"
+                        Height="10"
+                        Fill="{DynamicResource SurfaceFloating}" />
+                    <Ellipse
+                        x:Name="SwitchKnobOn"
+                        Width="10"
+                        Height="10"
+                        Fill="{DynamicResource SurfaceFloating}"
+                        Opacity="0" />
+                  </Grid>
+                </Canvas>
+              </Grid>
+            </Grid>
+          </Border>
+          <Border
+              x:Name="MenuToggleFocusRing"
+              IsHitTestVisible="False"
+              BorderBrush="{DynamicResource FocusRing}"
+              BorderThickness="3"
+              CornerRadius="{TemplateBinding CornerRadius}"
+              Opacity="0" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+    <Style Selector="^:pointerover">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+    </Style>
+    <Style Selector="^:pressed">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ Border#MenuToggleFocusRing">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:checked /template/ Border#OuterBorder">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:checked /template/ Border#SwitchKnobBounds">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:checked /template/ Ellipse#SwitchKnobOff">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:checked /template/ Ellipse#SwitchKnobOn">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:unchecked /template/ Border#OuterBorder">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:unchecked /template/ Border#SwitchKnobBounds">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:unchecked /template/ Ellipse#SwitchKnobOff">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:unchecked /template/ Ellipse#SwitchKnobOn">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+  </ControlTheme>
+
+  <ControlTheme x:Key="ScreenshotSliderRepeatButtonTheme" TargetType="RepeatButton">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Height="4"
+                VerticalAlignment="Center"
+                Background="{TemplateBinding Background}"
+                CornerRadius="2" />
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <ControlTheme x:Key="ScreenshotSliderThumbTheme" TargetType="Thumb">
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="10" />
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+  <ControlTheme x:Key="ScreenshotSliderTheme" TargetType="Slider">
+    <Setter Property="Focusable" Value="True" />
+    <Setter Property="Background" Value="{DynamicResource MeterTrack}" />
+    <Setter Property="Foreground" Value="{DynamicResource MeterFill}" />
+    <Setter Property="MinHeight" Value="32" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Track x:Name="PART_Track"
+               MinHeight="32"
+               Minimum="{TemplateBinding Minimum}"
+               Maximum="{TemplateBinding Maximum}"
+               Value="{TemplateBinding Value, Mode=TwoWay}"
+               IsDirectionReversed="{TemplateBinding IsDirectionReversed}"
+               Orientation="Horizontal">
+          <Track.DecreaseButton>
+            <RepeatButton x:Name="PART_DecreaseButton"
+                          Background="{TemplateBinding Foreground}"
+                          Focusable="False"
+                          Theme="{StaticResource ScreenshotSliderRepeatButtonTheme}" />
+          </Track.DecreaseButton>
+          <Track.IncreaseButton>
+            <RepeatButton x:Name="PART_IncreaseButton"
+                          Background="{TemplateBinding Background}"
+                          Focusable="False"
+                          Theme="{StaticResource ScreenshotSliderRepeatButtonTheme}" />
+          </Track.IncreaseButton>
+          <Thumb x:Name="ScreenshotSliderThumb"
+                 Width="20"
+                 Height="20"
+                 Background="{DynamicResource SurfaceFloating}"
+                 BorderBrush="{DynamicResource SurfaceFloatingSelectedBorder}"
+                 BorderThickness="2"
+                 Theme="{StaticResource ScreenshotSliderThumbTheme}" />
+        </Track>
+      </ControlTemplate>
+    </Setter>
+    <Style Selector="^:pointerover /template/ RepeatButton#PART_DecreaseButton">
+      <Setter Property="Background" Value="{DynamicResource CategoryApricot}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ RepeatButton#PART_IncreaseButton">
+      <Setter Property="Background" Value="{DynamicResource BorderSubtle}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Thumb#ScreenshotSliderThumb">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingHoverBorder}" />
+    </Style>
+    <Style Selector="^:pressed /template/ RepeatButton#PART_DecreaseButton">
+      <Setter Property="Background" Value="{DynamicResource CategoryCoral}" />
+    </Style>
+    <Style Selector="^:pressed /template/ RepeatButton#PART_IncreaseButton">
+      <Setter Property="Background" Value="{DynamicResource MeterTrack}" />
+    </Style>
+    <Style Selector="^:pressed /template/ Thumb#ScreenshotSliderThumb">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingSelectedBorder}" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ Thumb#ScreenshotSliderThumb">
+      <Setter Property="BorderBrush" Value="{DynamicResource FocusRing}" />
+      <Setter Property="BorderThickness" Value="3" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+  </ControlTheme>
+
+  <ControlTheme x:Key="ScreenshotToggleTheme" TargetType="ToggleSwitch">
+    <Setter Property="Focusable" Value="True" />
+    <Setter Property="Width" Value="40" />
+    <Setter Property="Height" Value="20" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="KnobTransitions">
+      <Transitions>
+        <DoubleTransition Property="Canvas.Left" Duration="0:0:0.2" Easing="CubicEaseOut" />
+      </Transitions>
+    </Setter>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid Width="40" Height="20">
+          <Border x:Name="OuterBorder"
+                  Background="{DynamicResource MeterTrack}"
+                  BorderBrush="{DynamicResource BorderSubtle}"
+                  BorderThickness="1"
+                  CornerRadius="10" />
+          <Border x:Name="SwitchKnobBounds"
+                  Background="{DynamicResource CategorySage}"
+                  BorderBrush="{DynamicResource StateConnected}"
+                  BorderThickness="1"
+                  CornerRadius="10"
+                  Opacity="0" />
+          <Canvas x:Name="PART_SwitchKnob"
+                  Width="20"
+                  Height="20"
+                  HorizontalAlignment="Left">
+            <Grid x:Name="PART_MovingKnobs" Width="20" Height="20">
+              <Ellipse x:Name="SwitchKnobOff" Width="10" Height="10"
+                       Fill="{DynamicResource SurfaceFloating}" />
+              <Ellipse x:Name="SwitchKnobOn" Width="10" Height="10"
+                       Fill="{DynamicResource SurfaceFloating}" Opacity="0" />
+            </Grid>
+          </Canvas>
+          <Border x:Name="ScreenshotToggleFocusRing"
+                  IsHitTestVisible="False"
+                  BorderBrush="{DynamicResource FocusRing}"
+                  BorderThickness="3"
+                  CornerRadius="10"
+                  Opacity="0" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+    <Style Selector="^:unchecked /template/ Border#OuterBorder, ^:unchecked /template/ Ellipse#SwitchKnobOff">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:unchecked /template/ Border#SwitchKnobBounds, ^:unchecked /template/ Ellipse#SwitchKnobOn">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:checked /template/ Border#OuterBorder, ^:checked /template/ Ellipse#SwitchKnobOff">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:checked /template/ Border#SwitchKnobBounds, ^:checked /template/ Ellipse#SwitchKnobOn">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:checked /template/ Border#SwitchKnobBounds">
+      <Setter Property="Background" Value="{DynamicResource CategorySage}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource StateConnected}" />
+    </Style>
+    <Style Selector="^:checked /template/ Ellipse#SwitchKnobOn">
+      <Setter Property="Fill" Value="{DynamicResource SurfaceFloating}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Border#OuterBorder">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingHoverBorder}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Border#SwitchKnobBounds">
+      <Setter Property="Background" Value="{DynamicResource CategorySage}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource StateConnected}" />
+    </Style>
+    <Style Selector="^:pressed:unchecked /template/ Border#OuterBorder">
+      <Setter Property="Background" Value="{DynamicResource SurfaceFloatingPressed}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource SurfaceFloatingSelectedBorder}" />
+    </Style>
+    <Style Selector="^:pressed:checked /template/ Border#SwitchKnobBounds">
+      <Setter Property="Background" Value="{DynamicResource CategorySagePressed}" />
+      <Setter Property="BorderBrush" Value="{DynamicResource StateConnected}" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ Border#ScreenshotToggleFocusRing">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+  </ControlTheme>
+
+  <ControlTheme x:Key="ScreenshotRadioTheme" TargetType="RadioButton">
+    <Setter Property="Focusable" Value="True" />
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="Foreground" Value="{DynamicResource TextPrimary}" />
+    <Setter Property="Padding" Value="8,0,0,0" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid ColumnDefinitions="20,*" MinHeight="32">
+          <Grid Width="20" Height="32">
+            <Ellipse x:Name="OuterEllipse" Width="20" Height="20"
+                     Fill="{DynamicResource SurfaceFloating}"
+                     Stroke="{DynamicResource BorderSubtle}"
+                     StrokeThickness="1" />
+            <Ellipse x:Name="CheckOuterEllipse" Width="20" Height="20"
+                     Fill="{DynamicResource CategoryApricot}"
+                     Stroke="{DynamicResource CategoryCoral}"
+                     StrokeThickness="1" Opacity="0" />
+            <Ellipse x:Name="CheckGlyph" Width="8" Height="8"
+                     Fill="{DynamicResource SurfaceFloating}"
+                     Stroke="{DynamicResource SurfaceFloating}"
+                     Opacity="0" />
+          </Grid>
+          <ContentPresenter x:Name="PART_ContentPresenter"
+                            Grid.Column="1"
+                            Margin="{TemplateBinding Padding}"
+                            VerticalAlignment="Center"
+                            Content="{TemplateBinding Content}"
+                            ContentTemplate="{TemplateBinding ContentTemplate}"
+                            Foreground="{TemplateBinding Foreground}" />
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+    <Style Selector="^:unchecked /template/ Ellipse#OuterEllipse">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:unchecked /template/ Ellipse#CheckOuterEllipse, ^:unchecked /template/ Ellipse#CheckGlyph">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:checked /template/ Ellipse#OuterEllipse">
+      <Setter Property="Opacity" Value="0" />
+    </Style>
+    <Style Selector="^:checked /template/ Ellipse#CheckOuterEllipse, ^:checked /template/ Ellipse#CheckGlyph">
+      <Setter Property="Opacity" Value="1" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Ellipse#OuterEllipse">
+      <Setter Property="Fill" Value="{DynamicResource SurfaceFloatingHover}" />
+      <Setter Property="Stroke" Value="{DynamicResource SurfaceFloatingHoverBorder}" />
+    </Style>
+    <Style Selector="^:pointerover /template/ Ellipse#CheckOuterEllipse">
+      <Setter Property="Fill" Value="{DynamicResource CategoryApricot}" />
+      <Setter Property="Stroke" Value="{DynamicResource CategoryCoral}" />
+    </Style>
+    <Style Selector="^:pressed /template/ Ellipse#OuterEllipse">
+      <Setter Property="Fill" Value="{DynamicResource SurfaceFloatingPressed}" />
+      <Setter Property="Stroke" Value="{DynamicResource SurfaceFloatingSelectedBorder}" />
+    </Style>
+    <Style Selector="^:pressed /template/ Ellipse#CheckOuterEllipse">
+      <Setter Property="Fill" Value="{DynamicResource CategoryCoral}" />
+      <Setter Property="Stroke" Value="{DynamicResource CategoryCoral}" />
+    </Style>
+    <Style Selector="^:focus-visible /template/ Ellipse#OuterEllipse, ^:focus-visible /template/ Ellipse#CheckOuterEllipse">
+      <Setter Property="Stroke" Value="{DynamicResource FocusRing}" />
+      <Setter Property="StrokeThickness" Value="3" />
+    </Style>
+    <Style Selector="^:disabled">
+      <Setter Property="Opacity" Value="0.46" />
+    </Style>
+  </ControlTheme>
+
+  <ControlTheme
+      x:Key="WidgetCommandButtonTheme"
+      TargetType="Button"
+      BasedOn="{StaticResource ShellIconButtonTheme}">
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="CornerRadius" Value="6" />
+    <Setter Property="Template">
+      <ControlTemplate>
+        <Grid Width="44" Height="44">
+          <Border
+              x:Name="WidgetCommandSurface"
+              Width="27"
+              Height="27"
+              HorizontalAlignment="Center"
+              VerticalAlignment="Center"
+              Background="{TemplateBinding Background}"
+              BorderBrush="{TemplateBinding BorderBrush}"
+              BorderThickness="{TemplateBinding BorderThickness}"
+              CornerRadius="6">
+            <ContentPresenter
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="{TemplateBinding Content}" />
+          </Border>
+        </Grid>
+      </ControlTemplate>
+    </Setter>
+  </ControlTheme>
+
+</ResourceDictionary>

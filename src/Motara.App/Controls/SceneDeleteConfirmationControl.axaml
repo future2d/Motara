@@ -1,0 +1,13 @@
+<UserControl
+    x:Class="Motara.App.Controls.SceneDeleteConfirmationControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Focusable="True">
+  <StackPanel Width="560" Spacing="18">
+    <TextBlock x:Name="Message" FontSize="14" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+    <StackPanel Classes="workspace-footer" HorizontalAlignment="Right" Orientation="Horizontal" Spacing="10">
+      <Button x:Name="Cancel" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="Confirm" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,139 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PurismCoreNativeLibraryPath Condition="'$(PurismCoreNativeLibraryPath)' == ''">$(MSBuildThisFileDirectory)..\..\artifacts\purismcore\win-x64\PurismCore.dll</PurismCoreNativeLibraryPath>
+    <FfmpegRuntimeRoot Condition="'$(FfmpegRuntimeRoot)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\ffmpeg-lgpl\ffmpeg-master-latest-win64-lgpl-shared\bin</FfmpegRuntimeRoot>
+    <FfmpegLicensePath Condition="'$(FfmpegLicensePath)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\ffmpeg-lgpl\ffmpeg-master-latest-win64-lgpl-shared\LICENSE.txt</FfmpegLicensePath>
+    <Spout2NativeLibraryPath Condition="'$(Spout2NativeLibraryPath)' == ''">$(MSBuildThisFileDirectory)..\..\native\win-x64\Motara.Spout2.Native.dll</Spout2NativeLibraryPath>
+    <Spout2LicensePath Condition="'$(Spout2LicensePath)' == ''">$(MSBuildThisFileDirectory)..\..\native\win-x64\Spout2-LICENSE.txt</Spout2LicensePath>
+    <NdiNativeLibraryPath Condition="'$(NdiNativeLibraryPath)' == ''">$(MSBuildThisFileDirectory)..\..\native\win-x64\Motara.Ndi.Native.dll</NdiNativeLibraryPath>
+    <MediaPipeNativeLibraryPath Condition="'$(MediaPipeNativeLibraryPath)' == ''">$(MSBuildThisFileDirectory)..\..\native\win-x64\Motara.MediaPipe.Native.dll</MediaPipeNativeLibraryPath>
+    <MediaPipeModelPath Condition="'$(MediaPipeModelPath)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\tracking\face_landmarker.task</MediaPipeModelPath>
+    <MediaPipeCameraLibraryPath Condition="'$(MediaPipeCameraLibraryPath)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\tracking\OpenSeeFace-win\escapi\escapi_x64.dll</MediaPipeCameraLibraryPath>
+    <MediaPipeCameraLicensePath Condition="'$(MediaPipeCameraLicensePath)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\tracking\OpenSeeFace-win\LICENSE</MediaPipeCameraLicensePath>
+    <OpenSeeFaceRuntimeRoot Condition="'$(OpenSeeFaceRuntimeRoot)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\tracking\OpenSeeFace-win\Binary</OpenSeeFaceRuntimeRoot>
+    <OpenSeeFaceModelsRoot Condition="'$(OpenSeeFaceModelsRoot)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\tracking\OpenSeeFace-win\models</OpenSeeFaceModelsRoot>
+    <OpenSeeFaceLicensePath Condition="'$(OpenSeeFaceLicensePath)' == ''">$(MSBuildThisFileDirectory)..\..\.artifacts\tracking\OpenSeeFace-win\LICENSE</OpenSeeFaceLicensePath>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Motara.Core/Motara.Core.csproj" />
+    <ProjectReference Include="../Motara.Collaboration/Motara.Collaboration.csproj" />
+    <ProjectReference Include="../Motara.ModelLibrary/Motara.ModelLibrary.csproj" />
+    <ProjectReference Include="../Motara.Media/Motara.Media.csproj" />
+    <ProjectReference Include="../Motara.ModelRuntime.PurismCore/Motara.ModelRuntime.PurismCore.csproj" />
+    <ProjectReference Include="../Motara.Output.Abstractions/Motara.Output.Abstractions.csproj" />
+    <ProjectReference Include="../Motara.Output.CubismEditor/Motara.Output.CubismEditor.csproj" />
+    <ProjectReference Include="../Motara.Persistence/Motara.Persistence.csproj" />
+    <ProjectReference Include="../Motara.Scene/Motara.Scene.csproj" />
+    <ProjectReference Include="../Motara.Tracking.iFacialMocap/Motara.Tracking.iFacialMocap.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.AvaloniaEdit" />
+    <PackageReference Include="Avalonia.Desktop" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="Microsoft.Extensions.Logging" />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Sinks.File" />
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(PurismCoreNativeLibraryPath)')">
+    <Content Include="$(PurismCoreNativeLibraryPath)">
+      <Link>PurismCore.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(Spout2NativeLibraryPath)')">
+    <Content Include="$(Spout2NativeLibraryPath)">
+      <Link>Motara.Spout2.Native.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(Spout2LicensePath)')">
+    <Content Include="$(Spout2LicensePath)">
+      <Link>Spout2-LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(NdiNativeLibraryPath)')">
+    <Content Include="$(NdiNativeLibraryPath)">
+      <Link>Motara.Ndi.Native.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MediaPipeNativeLibraryPath)')">
+    <Content Include="$(MediaPipeNativeLibraryPath)">
+      <Link>tracking\MediaPipe\Motara.MediaPipe.Native.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MediaPipeModelPath)')">
+    <Content Include="$(MediaPipeModelPath)">
+      <Link>tracking\MediaPipe\face_landmarker.task</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MediaPipeCameraLibraryPath)')">
+    <Content Include="$(MediaPipeCameraLibraryPath)">
+      <Link>tracking\MediaPipe\escapi_x64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(MediaPipeCameraLicensePath)')">
+    <Content Include="$(MediaPipeCameraLicensePath)">
+      <Link>tracking\MediaPipe\ESCAPI-LICENSE</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(OpenSeeFaceRuntimeRoot)\facetracker.exe')">
+    <Content Include="$(OpenSeeFaceRuntimeRoot)\**\*">
+      <Link>tracking\OpenSeeFace\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(OpenSeeFaceModelsRoot)')">
+    <Content Include="$(OpenSeeFaceModelsRoot)\**\*">
+      <Link>tracking\models\%(RecursiveDir)%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(OpenSeeFaceLicensePath)')">
+    <Content Include="$(OpenSeeFaceLicensePath)">
+      <Link>tracking\OpenSeeFace\LICENSE</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition="Exists('$(FfmpegRuntimeRoot)\ffmpeg.exe') and Exists('$(FfmpegRuntimeRoot)\ffprobe.exe')">
+    <Content Include="$(FfmpegRuntimeRoot)\ffmpeg.exe">
+      <Link>ffmpeg\ffmpeg.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="$(FfmpegRuntimeRoot)\ffprobe.exe">
+      <Link>ffmpeg\ffprobe.exe</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="$(FfmpegRuntimeRoot)\*.dll">
+      <Link>ffmpeg\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="$(FfmpegLicensePath)">
+      <Link>ffmpeg\LICENSE.txt</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

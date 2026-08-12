@@ -1,0 +1,42 @@
+<UserControl
+    x:Class="Motara.App.Controls.FormulaEditorControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:edit="clr-namespace:AvaloniaEdit;assembly=AvaloniaEdit">
+  <Grid RowDefinitions="*,Auto" RowSpacing="6">
+  <Border
+      Background="{DynamicResource SurfaceFloating}"
+      BorderBrush="{DynamicResource BorderSubtle}"
+      BorderThickness="1"
+      CornerRadius="8"
+      Padding="8">
+    <edit:TextEditor
+        x:Name="Editor"
+        Background="Transparent"
+        BorderThickness="0"
+        FontFamily="Consolas"
+        FontSize="14"
+        Foreground="{DynamicResource TextPrimary}"
+        WordWrap="True"
+        HorizontalScrollBarVisibility="Disabled"
+        VerticalScrollBarVisibility="Auto"
+        ShowLineNumbers="False" />
+  </Border>
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+      <TextBlock
+          x:Name="DiagnosticText"
+          FontSize="12"
+          Foreground="{DynamicResource StatusError}"
+          IsVisible="False"
+          TextWrapping="Wrap" />
+      <TextBlock
+          x:Name="PreviewText"
+          Grid.Column="1"
+          FontSize="12"
+          Foreground="{DynamicResource TextSecondary}"
+          IsVisible="False"
+          MaxWidth="360"
+          TextWrapping="Wrap" />
+    </Grid>
+  </Grid>
+</UserControl>

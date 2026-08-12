@@ -1,0 +1,38 @@
+<UserControl
+    x:Class="Motara.App.Controls.ParameterPriorityWorkspaceControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid RowDefinitions="Auto,*,Auto" RowSpacing="14">
+    <TextBlock x:Name="Description" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+    <Border Grid.Row="1" Padding="6" Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8">
+      <ListBox x:Name="Providers" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid ColumnDefinitions="28,*" Margin="4,3" MinHeight="38">
+              <TextBlock Text="{Binding Priority}" VerticalAlignment="Center" Foreground="{DynamicResource TextSecondary}" />
+              <TextBlock Grid.Column="1" Text="{Binding Label}" VerticalAlignment="Center" FontSize="14" />
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+    <Grid Classes="workspace-footer" Grid.Row="2" ColumnDefinitions="Auto,Auto,*,Auto,Auto" ColumnSpacing="8">
+      <Button x:Name="MoveUp" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Button x:Name="MoveDown" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Button x:Name="Restore" Grid.Column="3" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Button x:Name="Apply" Grid.Column="4" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+    </Grid>
+    <Border x:Name="ConfirmationOverlay" Grid.RowSpan="3" IsVisible="False" Background="{DynamicResource SurfaceFloatingHover}" ZIndex="10">
+      <Border Width="430" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+        <StackPanel Spacing="14">
+          <TextBlock x:Name="ConfirmationMessage" TextWrapping="Wrap" />
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button x:Name="ConfirmationCancel" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+            <Button x:Name="ConfirmationConfirm" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Border>
+  </Grid>
+</UserControl>

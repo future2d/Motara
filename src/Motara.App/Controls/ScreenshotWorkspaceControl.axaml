@@ -1,0 +1,71 @@
+<UserControl
+    x:Class="Motara.App.Controls.ScreenshotWorkspaceControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto" RowSpacing="16">
+    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto" ColumnSpacing="16">
+      <TextBlock x:Name="CountdownLabel" VerticalAlignment="Center" FontSize="14" />
+      <TextBlock x:Name="CountdownValue" Grid.Column="1" VerticalAlignment="Center"
+                 FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+      <Slider x:Name="CountdownSlider" Grid.Row="1" Grid.ColumnSpan="2"
+              Minimum="0" Maximum="10" TickFrequency="1" IsSnapToTickEnabled="True"
+              Theme="{DynamicResource ScreenshotSliderTheme}" />
+    </Grid>
+
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+      <TextBlock x:Name="TransparentLabel" VerticalAlignment="Center" FontSize="14" />
+      <ToggleSwitch x:Name="TransparentToggle" Grid.Column="1"
+                    Theme="{DynamicResource ScreenshotToggleTheme}" />
+    </Grid>
+
+    <Grid Grid.Row="2" ColumnDefinitions="*,Auto">
+      <TextBlock x:Name="CustomResolutionLabel" VerticalAlignment="Center" FontSize="14" />
+      <ToggleSwitch x:Name="CustomResolutionToggle" Grid.Column="1"
+                    Theme="{DynamicResource ScreenshotToggleTheme}" />
+    </Grid>
+
+    <StackPanel Grid.Row="3" Spacing="10">
+      <Grid ColumnDefinitions="Auto,*,Auto,*" ColumnSpacing="10">
+        <TextBlock x:Name="WidthLabel" VerticalAlignment="Center" FontSize="14" />
+        <TextBox x:Name="WidthInput" Grid.Column="1" FontSize="14" />
+        <TextBlock x:Name="HeightLabel" Grid.Column="2" VerticalAlignment="Center" FontSize="14" />
+        <TextBox x:Name="HeightInput" Grid.Column="3" FontSize="14" />
+      </Grid>
+      <WrapPanel x:Name="PresetButtons" Orientation="Horizontal" ItemWidth="90" ItemHeight="38">
+        <Button x:Name="Preset720" Content="720p" Margin="0,0,8,0" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="13" />
+        <Button x:Name="Preset1080" Content="1080p" Margin="0,0,8,0" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="13" />
+        <Button x:Name="Preset2K" Content="2K" Margin="0,0,8,0" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="13" />
+        <Button x:Name="Preset4K" Content="4K" Margin="0,0,8,0" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="13" />
+        <Button x:Name="Preset8K" Content="8K" Margin="0,0,8,0" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="13" />
+        <Button x:Name="Preset16K" Content="16K" Margin="0,0,8,0" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="13" />
+      </WrapPanel>
+    </StackPanel>
+
+    <StackPanel Grid.Row="4" Spacing="10">
+      <TextBlock x:Name="FramingLabel" FontSize="14" />
+      <StackPanel x:Name="FramingChoices" Orientation="Horizontal" Spacing="16">
+        <RadioButton x:Name="ExtendCanvasChoice" GroupName="ScreenshotFraming" FontSize="14"
+                     Theme="{DynamicResource ScreenshotRadioTheme}" />
+        <RadioButton x:Name="CenterCropChoice" GroupName="ScreenshotFraming" FontSize="14"
+                     Theme="{DynamicResource ScreenshotRadioTheme}" />
+      </StackPanel>
+      <TextBlock x:Name="HighResolutionWarning" IsVisible="True" Opacity="0" FontSize="13"
+                 Foreground="{DynamicResource StateDegraded}" TextWrapping="Wrap" />
+    </StackPanel>
+
+    <TextBlock x:Name="ValidationText" Grid.Row="5" FontSize="13"
+               Foreground="{DynamicResource StateFaulted}" TextWrapping="Wrap" />
+
+    <Grid Classes="workspace-footer" Grid.Row="6" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+      <Button x:Name="OpenFolderButton"
+              HorizontalAlignment="Left"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="CancelButton" Grid.Column="1"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="CaptureButton" Grid.Column="2"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </Grid>
+
+  </Grid>
+</UserControl>

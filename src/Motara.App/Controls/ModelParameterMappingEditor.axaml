@@ -1,0 +1,74 @@
+<UserControl
+    x:Class="Motara.App.Controls.ModelParameterMappingEditor"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Motara.App.Controls"
+    x:CompileBindings="False">
+  <UserControl.Styles>
+    <Style Selector="ListBox"><Setter Property="Background" Value="Transparent" /><Setter Property="BorderThickness" Value="0" /><Setter Property="Padding" Value="4" /></Style>
+    <Style Selector="ListBoxItem"><Setter Property="Padding" Value="10,8" /><Setter Property="Margin" Value="0,2" /><Setter Property="CornerRadius" Value="7" /></Style>
+    <Style Selector="ListBoxItem:pointerover"><Setter Property="Background" Value="{DynamicResource SurfaceFloatingHover}" /></Style>
+    <Style Selector="ListBoxItem:selected"><Setter Property="Background" Value="{DynamicResource SurfaceFloatingSelected}" /></Style>
+  </UserControl.Styles>
+  <controls:ParameterMappingEditorShell x:Name="EditorShell">
+    <controls:ParameterMappingEditorShell.EditorContent>
+      <Grid x:Name="ParameterPanes" ColumnDefinitions="240,280,*" ColumnSpacing="14">
+        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="7">
+          <TextBlock x:Name="GlobalTitle" FontSize="14" FontWeight="SemiBold" />
+          <TextBox x:Name="GlobalSearch" Grid.Row="1" />
+          <Border Grid.Row="2" Background="{DynamicResource SurfaceFloatingHover}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" CornerRadius="8">
+            <ListBox x:Name="GlobalList" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+              <ListBox.ItemTemplate><DataTemplate><StackPanel Spacing="2"><TextBlock Text="{Binding Id}" FontSize="13" /><TextBlock Text="{Binding Subtitle}" FontSize="11" Foreground="{DynamicResource TextSecondary}" /></StackPanel></DataTemplate></ListBox.ItemTemplate>
+            </ListBox>
+          </Border>
+        </Grid>
+        <Grid Grid.Column="1" RowDefinitions="Auto,Auto,*" RowSpacing="7">
+          <TextBlock x:Name="ModelTitle" FontSize="14" FontWeight="SemiBold" />
+          <TextBox x:Name="ModelSearch" Grid.Row="1" />
+          <Border Grid.Row="2" Background="{DynamicResource SurfaceFloatingHover}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" CornerRadius="8">
+            <ListBox x:Name="ModelList" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+              <ListBox.ItemTemplate><DataTemplate><StackPanel Spacing="2"><TextBlock Text="{Binding Id}" FontSize="13" /><TextBlock Text="{Binding Name}" FontSize="11" Foreground="{DynamicResource TextSecondary}" /></StackPanel></DataTemplate></ListBox.ItemTemplate>
+            </ListBox>
+          </Border>
+        </Grid>
+        <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+          <StackPanel Margin="18" Spacing="16">
+            <TextBlock x:Name="SettingsTitle" FontSize="14" FontWeight="SemiBold" />
+            <TextBlock x:Name="NoSelection" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+            <StackPanel x:Name="SettingsContent" IsVisible="False" Spacing="14">
+              <StackPanel Spacing="6">
+                <TextBlock x:Name="BindingLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                  <controls:IdentifierCompletionEditor x:Name="BindingInput" />
+                  <Button x:Name="ClearBinding" Grid.Column="1" MinWidth="100" HorizontalContentAlignment="Center" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+                </Grid>
+              </StackPanel>
+              <Grid x:Name="RangeMappingPanel" ColumnDefinitions="*,32,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnSpacing="8" RowSpacing="8">
+                <TextBlock x:Name="InputDeclaredRange" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Left" FontSize="11" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+                <TextBlock x:Name="OutputDeclaredRange" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" FontSize="11" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+                <NumericUpDown x:Name="InputMaximum" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Stretch" Value="{Binding InputMaximum}" Increment="0.1" />
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <NumericUpDown x:Name="OutputMaximum" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Stretch" Value="{Binding OutputMaximum}" Increment="0.1" />
+                <TextBlock x:Name="CurrentInput" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+                <TextBlock x:Name="CurrentOutput" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                <NumericUpDown x:Name="InputMinimum" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Stretch" Value="{Binding InputMinimum}" Increment="0.1" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="→" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <NumericUpDown x:Name="OutputMinimum" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Stretch" Value="{Binding OutputMinimum}" Increment="0.1" />
+                <TextBlock x:Name="MappingError" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Height="24" FontSize="12" Foreground="{DynamicResource StatusError}" TextWrapping="Wrap" />
+              </Grid>
+              <StackPanel x:Name="ModelBehaviorSettings" Spacing="8">
+                <ToggleSwitch x:Name="ClampInput" IsChecked="{Binding ClampInput}" Theme="{DynamicResource MenuRowToggleTheme}" />
+                <ToggleSwitch x:Name="ClampOutput" IsChecked="{Binding ClampOutput}" Theme="{DynamicResource MenuRowToggleTheme}" />
+                <ToggleSwitch x:Name="AutoBlink" IsChecked="{Binding EnableAutoBlink}" Theme="{DynamicResource MenuRowToggleTheme}" />
+                <ToggleSwitch x:Name="AutoBreath" IsChecked="{Binding EnableAutoBreath}" Theme="{DynamicResource MenuRowToggleTheme}" />
+              </StackPanel>
+            </StackPanel>
+          </StackPanel>
+        </ScrollViewer>
+      </Grid>
+    </controls:ParameterMappingEditorShell.EditorContent>
+    <controls:ParameterMappingEditorShell.FooterContent>
+      <Button x:Name="AutoMatch" HorizontalAlignment="Right" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+    </controls:ParameterMappingEditorShell.FooterContent>
+  </controls:ParameterMappingEditorShell>
+</UserControl>

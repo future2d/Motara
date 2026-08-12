@@ -1,0 +1,30 @@
+<UserControl
+    x:Class="Motara.App.Controls.SessionInviteGenerationControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <StackPanel Spacing="14">
+    <TextBlock x:Name="SummaryText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+    <TextBlock x:Name="PolicyLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+    <ComboBox x:Name="PolicySelect" FontSize="14" />
+    <Button x:Name="GenerateButton" Theme="{DynamicResource WorkspaceActionButtonTheme}"
+            HorizontalAlignment="Left" FontSize="14" />
+    <Border x:Name="GenerationConfirmationPanel" IsVisible="False" Padding="14" CornerRadius="8"
+            Background="{DynamicResource SurfaceFloatingHover}">
+      <StackPanel Spacing="10">
+        <TextBlock x:Name="GenerationConfirmationText" FontSize="14"
+                   Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+          <Button x:Name="CancelGenerationButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          <Button x:Name="ConfirmGenerationButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+    <TextBlock x:Name="LinkLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+    <TextBlock x:Name="LinkText" FontSize="14" TextWrapping="Wrap" />
+    <StackPanel x:Name="ActionButtons" Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+      <Button x:Name="CopyButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      <Button x:Name="CloseButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

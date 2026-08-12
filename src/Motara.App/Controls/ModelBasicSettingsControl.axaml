@@ -1,0 +1,44 @@
+<UserControl
+    x:Class="Motara.App.Controls.ModelBasicSettingsControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Motara.App.Controls"
+    x:CompileBindings="False">
+  <controls:ParameterMappingEditorShell x:Name="EditorShell" IsActionBarVisible="True">
+    <controls:ParameterMappingEditorShell.EditorContent>
+      <StackPanel Spacing="18">
+        <Grid ColumnDefinitions="112,*" ColumnSpacing="16">
+          <Border Width="112" Height="112" CornerRadius="6" ClipToBounds="True"
+                  Background="{DynamicResource SurfaceFloatingHover}"
+                  BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1">
+            <Image x:Name="PreviewImage" Stretch="UniformToFill" />
+          </Border>
+          <StackPanel Grid.Column="1" Spacing="8" VerticalAlignment="Center">
+            <TextBlock x:Name="PreviewLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+            <TextBlock x:Name="PreviewPathText" FontSize="13" TextWrapping="Wrap"
+                       Foreground="{DynamicResource TextPrimary}" />
+            <Button x:Name="ChoosePreviewButton" HorizontalAlignment="Left"
+                    Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </StackPanel>
+        </Grid>
+        <StackPanel Spacing="7">
+          <TextBlock x:Name="NicknameLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+          <TextBox x:Name="NicknameInput" MaxLength="128" Text="{Binding Nickname}" />
+        </StackPanel>
+        <StackPanel Spacing="7">
+          <TextBlock x:Name="IdleMotionLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+          <ComboBox x:Name="IdleMotionSelector" />
+        </StackPanel>
+        <StackPanel Spacing="7">
+          <TextBlock x:Name="LostIdleMotionLabel" FontSize="12" Foreground="{DynamicResource TextSecondary}" />
+          <ComboBox x:Name="LostIdleMotionSelector" />
+        </StackPanel>
+      </StackPanel>
+    </controls:ParameterMappingEditorShell.EditorContent>
+    <controls:ParameterMappingEditorShell.FooterContent>
+      <Button x:Name="RestoreDefaultsButton"
+              HorizontalAlignment="Right"
+              Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+    </controls:ParameterMappingEditorShell.FooterContent>
+  </controls:ParameterMappingEditorShell>
+</UserControl>

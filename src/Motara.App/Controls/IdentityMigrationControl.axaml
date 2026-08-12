@@ -1,0 +1,40 @@
+<UserControl
+    x:Class="Motara.App.Controls.IdentityMigrationControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid>
+    <StackPanel Spacing="14">
+      <TextBlock x:Name="SummaryText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+      <TextBlock x:Name="FileLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+      <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+        <TextBox x:Name="FilePathText" IsReadOnly="True" FontSize="14" />
+        <Button x:Name="ChooseFileButton" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      </Grid>
+      <TextBlock x:Name="PassphraseLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+      <TextBox x:Name="PassphraseInput" PasswordChar="*" FontSize="14" MaxLength="1024" />
+      <StackPanel x:Name="ConfirmationPanel" Spacing="6">
+        <TextBlock x:Name="ConfirmationLabel" FontSize="13" Foreground="{DynamicResource TextSecondary}" />
+        <TextBox x:Name="ConfirmationInput" PasswordChar="*" FontSize="14" MaxLength="1024" />
+      </StackPanel>
+      <Border x:Name="InspectionPanel" IsVisible="False" Padding="12" CornerRadius="8" Background="{DynamicResource SurfaceFloatingHover}">
+        <TextBlock x:Name="InspectionText" FontSize="13" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+      </Border>
+      <TextBlock x:Name="StatusText" MinHeight="20" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+      <StackPanel Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+        <Button x:Name="CancelButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        <Button x:Name="PrimaryButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+      </StackPanel>
+    </StackPanel>
+
+    <Border x:Name="ReplacementOverlay" IsVisible="False" Background="{DynamicResource SurfaceFloatingHover}" CornerRadius="8" Padding="18">
+      <StackPanel VerticalAlignment="Center" Spacing="18">
+        <TextBlock x:Name="ReplacementText" FontSize="14" Foreground="{DynamicResource TextPrimary}" TextWrapping="Wrap" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+          <Button x:Name="CancelReplacementButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+          <Button x:Name="ConfirmReplacementButton" Theme="{DynamicResource WorkspaceActionButtonTheme}" FontSize="14" />
+        </StackPanel>
+      </StackPanel>
+    </Border>
+  </Grid>
+</UserControl>

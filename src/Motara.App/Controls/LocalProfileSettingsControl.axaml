@@ -1,0 +1,24 @@
+<UserControl
+    x:Class="Motara.App.Controls.LocalProfileSettingsControl"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <StackPanel Spacing="16">
+    <StackPanel Spacing="6">
+      <TextBlock x:Name="DisplayNameLabel" FontSize="13"
+                 Foreground="{DynamicResource TextSecondary}" />
+      <TextBox x:Name="DisplayNameInput" FontSize="14" MaxLength="80" />
+    </StackPanel>
+    <TextBlock x:Name="ValidationText" MinHeight="20" FontSize="13"
+               Foreground="{DynamicResource StatusError}"
+               TextWrapping="Wrap" />
+    <StackPanel x:Name="ActionButtons" Classes="workspace-footer" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="10">
+      <Button x:Name="CopyIdentityCodeButton" Theme="{DynamicResource WorkspaceActionButtonTheme}"
+              FontSize="14" />
+      <Button x:Name="CancelButton" Theme="{DynamicResource WorkspaceActionButtonTheme}"
+              FontSize="14" />
+      <Button x:Name="ConfirmButton" Theme="{DynamicResource WorkspaceActionButtonTheme}"
+              FontSize="14" />
+    </StackPanel>
+  </StackPanel>
+</UserControl>

@@ -1,0 +1,41 @@
+<UserControl
+    x:Class="Motara.App.Controls.SceneEffectEditor"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:CompileBindings="False">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="14">
+    <TextBlock x:Name="Description" FontSize="13" Foreground="{DynamicResource TextSecondary}" TextWrapping="Wrap" />
+    <Grid Grid.Row="1" ColumnDefinitions="*,Auto" ColumnSpacing="12">
+      <TextBlock x:Name="RadiusLabel" VerticalAlignment="Center" />
+      <NumericUpDown x:Name="Radius" Grid.Column="1" Width="150" Minimum="0" Maximum="40" Increment="0.5" Value="8" />
+    </Grid>
+    <ToggleSwitch x:Name="Enabled" Grid.Row="2" />
+    <Grid Classes="workspace-footer" Grid.Row="3" ColumnDefinitions="*,Auto,Auto,Auto" ColumnSpacing="8">
+      <Button x:Name="Delete" Grid.Column="1" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Button x:Name="Cancel" Grid.Column="2" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+      <Button x:Name="Apply" Grid.Column="3" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+    </Grid>
+    <Border x:Name="CloseOverlay" Grid.RowSpan="4" IsVisible="False" Background="{DynamicResource SurfaceFloatingHover}" ZIndex="5">
+      <Border Width="420" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+        <StackPanel Spacing="12">
+          <TextBlock x:Name="CloseMessage" TextWrapping="Wrap" />
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button x:Name="CloseCancel" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+            <Button x:Name="Discard" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Border>
+    <Border x:Name="DeleteOverlay" Grid.RowSpan="4" IsVisible="False" Background="{DynamicResource SurfaceFloatingHover}" ZIndex="6">
+      <Border Width="420" Padding="22" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource SurfaceFloating}" BorderBrush="{DynamicResource BorderSubtle}" BorderThickness="1" BoxShadow="{DynamicResource FloatingSurfaceShadow}" CornerRadius="10">
+        <StackPanel Spacing="12">
+          <TextBlock x:Name="DeleteMessage" TextWrapping="Wrap" />
+          <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+            <Button x:Name="DeleteCancel" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+            <Button x:Name="DeleteConfirm" Theme="{DynamicResource WorkspaceActionButtonTheme}" />
+          </StackPanel>
+        </StackPanel>
+      </Border>
+    </Border>
+  </Grid>
+</UserControl>
